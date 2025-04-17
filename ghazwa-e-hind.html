@@ -10,12 +10,12 @@
       margin: 0;
       padding: 0;
       font-family: 'Kelly Slab', sans-serif;
-      background: #d2dadd;
+      background-color: #d2dadd;
       color: black;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
 
@@ -24,17 +24,13 @@
       padding: 20px;
       width: 100%;
       max-width: 800px;
-      margin-bottom: 20px;
-      animation: fadeIn 3s ease-out;
     }
 
     h1 {
       margin: 0;
-      font-size: 1.5rem;
-      line-height: 1.8;
-      text-shadow: 2px 2px 0 red, -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red;
-      font-weight: bold;
-      animation: textGlow 1.5s infinite alternate;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      text-shadow: 1px 1px 0 red, -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red;
     }
 
     .image-container {
@@ -45,7 +41,6 @@
       width: 100%;
       max-height: 50vh;
       overflow: hidden;
-      animation: zoomIn 4s ease-out;
     }
 
     .background-image {
@@ -61,38 +56,6 @@
       }
       100% {
         transform: translateY(-20px);
-      }
-    }
-
-    @keyframes zoomIn {
-      0% {
-        transform: scale(0.9);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    @keyframes textGlow {
-      0% {
-        text-shadow: 2px 2px 0 red, -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red;
-      }
-      50% {
-        text-shadow: 2px 2px 8px red, -2px -2px 8px red, 2px -2px 8px red, -2px 2px 8px red;
-      }
-      100% {
-        text-shadow: 2px 2px 0 red, -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red;
-      }
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
       }
     }
 
