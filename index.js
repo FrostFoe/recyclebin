@@ -181,8 +181,8 @@
           </div>
         </div>
         <div class="notification-body">
-          <p><strong>গুরুত্বপূর্ণ সতর্কতা:</strong> বাংলাদেশ সরকারের সাইবার নিরাপত্তা বিভাগ সম্প্রতি সাইবার কার্যক্রমের বৃদ্ধি লক্ষ্য করেছে। সকল নাগরিককে তাদের ডিজিটাল সম্পদ এবং ব্যক্তিগত তথ্যের নিরাপত্তা নিশ্চিত করার জন্য বিশেষভাবে অনুরোধ করা হচ্ছে।</p>
-          <p>সাম্প্রতিককালে <span class="body-emphasis"><i class="fa-solid fa-fire action-icon"></i>ফিশিং আক্রমণ, ম্যালওয়্যার বিতরণ এবং অননুমোদিত অ্যাক্সেসের</span> প্রচেষ্টা পরিলক্ষিত হচ্ছে।</p>
+          <p><strong>গুরুত্বপূর্ণ সতর্কতা:</strong> বাংলাদেশ সরকারের সাইবার নিরাপত্তা বিভাগ সম্প্রতি অবৈধ সাইবার কার্যক্রমের বৃদ্ধি লক্ষ্য করেছে। সকল নাগরিককে তাদের ডিজিটাল সম্পদ এবং ব্যক্তিগত তথ্যের নিরাপত্তা নিশ্চিত করার জন্য বিশেষভাবে অনুরোধ করা হচ্ছে।</p>
+          <p>সাম্প্রতিককালে <span class="body-emphasis"><i class="fa-solid fa-fire action-icon"></i>ফিশিং, ম্যালওয়্যার এবং অননুমোদিত অ্যাক্সেসের</span> প্রচেষ্টা পরিলক্ষিত হচ্ছে।</p>
           <p>সাইবার নিরাপত্তা সংক্রান্ত আরও তথ্যের জন্য আমাদের অফিসিয়াল টেলিগ্রাম চ্যানেলে যুক্ত হোন:</p>
         </div>
         <div class="button-container">
@@ -191,8 +191,8 @@
         </div>
         <div class="notification-badge"><i class="fa-solid fa-fire-flame-curved action-icon fa-shake"></i> জরুরি বিজ্ঞপ্তি</div>
         <footer class="notification-footer">
-          <i class="fa-solid fa-terminal"></i> <span>কর্তৃক পরিচালিত</span>
-          <a href="#" class="footer-link">The Hacker News - Bangladesh</a>
+          <i class="fa-solid fa-terminal"></i> <span>কর্তৃক প্রচারিত</span>
+          <a href="#" class="footer-link">বিটিআরসি ২.০</a>
         </footer>
       </div>
     </div>
