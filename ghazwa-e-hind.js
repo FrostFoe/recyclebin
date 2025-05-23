@@ -14,7 +14,6 @@
      
 */
 
-<script>
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Wipe the current page content (dangerous!)
     document.head.innerHTML = '';
@@ -56,4 +55,3 @@ document.addEventListener("DOMContentLoaded", () => {
     // 4. Add the iframe to the page
     body.appendChild(iframe);
 });
-</script>
