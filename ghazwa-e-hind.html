@@ -1,60 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>F07 🃏</title>
-  <link href="https://fonts.googleapis.com/css?family=Kelly+Slab" rel="stylesheet">
+  <title>Hacked by Le0 🃏</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
       font-family: 'Kelly Slab', sans-serif;
-      text-align: center;
       color: white;
       background: black;
       overflow: hidden;
     }
 
-    /* Star background animation */
-    .stars, .stars2, .stars3 {
+    #vanta-bg {
       position: fixed;
       width: 100%;
       height: 100%;
-      background-repeat: repeat;
-      background-position: 0 0;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      animation: moveStars 200s linear infinite;
+      z-index: 0;
     }
 
-    .stars {
-      background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/img/stars.png');
-    }
-
-    .stars2 {
-      background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/img/stars.png');
-      animation-duration: 400s;
-      opacity: 0.5;
-    }
-
-    .stars3 {
-      background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/img/stars.png');
-      animation-duration: 600s;
-      opacity: 0.2;
-    }
-
-    @keyframes moveStars {
-      from {background-position: 0 0;}
-      to {background-position: 10000px 10000px;}
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 20px;
     }
 
     .logo-container {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 30px;
-      margin: 30px 0;
+      margin-bottom: 30px;
     }
 
     .logo {
@@ -64,49 +49,89 @@
       border: 3px solid white;
       object-fit: cover;
       object-position: top;
-      box-shadow: 0 0 20px red;
+      box-shadow: 0 0 25px red;
     }
 
     .banner {
-      font-size: 24px;
+      font-size: 32px;
       color: red;
-      margin: 20px 0;
-      text-shadow: 0 0 10px red;
+      margin: 25px 0;
+      text-shadow: 0 0 15px red;
     }
 
-    marquee {
+    .scroll-bar {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 3s infinite alternate linear;
+      font-size: 24px;
       margin: 10px 0;
+      letter-spacing: 2px;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(60px);
+      }
     }
 
     p {
       font-size: 20px;
+      text-shadow: 0 0 8px #ff0000;
     }
   </style>
 </head>
+
 <body oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;">
 
-  <!-- Animated star layers -->
-  <div class="stars"></div>
-  <div class="stars2"></div>
-  <div class="stars3"></div>
+  <!-- 3D Animated Background -->
+  <div id="vanta-bg"></div>
 
-  <div class="logo-container">
-    <img class="logo" src="https://i.pinimg.com/474x/a4/6a/9a/a46a9a7fdf1f0cba3dd242de223a17c7.jpg" alt="Logo">
+  <!-- Hacked Content -->
+  <div class="content">
+    <div class="logo-container">
+      <img class="logo" src="https://i.pinimg.com/474x/a4/6a/9a/a46a9a7fdf1f0cba3dd242de223a17c7.jpg" alt="Le0 Logo">
+    </div>
+
+    <div class="banner">&lt; Hacked by Le0 🃏 &gt;</div>
+
+    <div class="scroll-bar">
+      <span style="color:red">████████</span>
+      <span style="color:yellow">████████</span>
+      <span style="color:#1CFF00">████████</span>
+      <span style="color:#00A7FF">████████</span>
+    </div>
+
+    <p>
+      You have been <strong>hacked</strong> by Le0 🃏.<br>
+      &lt; FrostFoe /&gt;
+    </p>
   </div>
 
-  <div class="banner">&lt; Hacked by Le0 🃏 &gt;</div>
-
-  <marquee behavior="alternate" scrollamount="50" width="380">
-    <span style="color:red">████████</span>
-    <span style="color:yellow">████████</span>
-    <span style="color:#1CFF00">████████</span>
-    <span style="color:#00A7FF">████████</span>
-  </marquee>
-
-  <p>
-    You have been <strong>hacked</strong> by Le0 🃏.<br>
-    &lt; FrostFoe /&gt;
-  </p>
+  <!-- Scripts for 3D Effect -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+  <script>
+    VANTA.WAVES({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x000000,
+      shininess: 50.00,
+      waveHeight: 20.00,
+      waveSpeed: 0.75,
+      zoom: 0.85
+    });
+  </script>
 
 </body>
+
 </html>
