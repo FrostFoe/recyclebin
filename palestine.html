@@ -1,14 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hacked By IllegalBAT</title>
-    <link rel="icon" href="https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg" type="image/png" />
+    <link rel="icon" href="https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              slab: ['"Kelly Slab"', 'sans-serif'],
+              bangla: ['"Arek Bangla"', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Arek+Bangla&family=Kelly+Slab&display=swap" rel="stylesheet" />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap');
-      
       @keyframes flicker {
         0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
           text-shadow:
@@ -21,95 +33,53 @@
             0 0 100px #0fa,
             0 0 150px #0fa;
         }
-        20%, 24%, 55% {        
+        20%, 24%, 55% {
           text-shadow: none;
         }
       }
-      
-      @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-      }
-      
-      @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-      }
-      
-      @keyframes scanline {
-        0% { background-position: 0 -100vh; }
-        100% { background-position: 0 100vh; }
-      }
-      
-      .neon-text {
+      .flicker {
         animation: flicker 3s infinite alternate;
       }
-      
-      .pulse {
-        animation: pulse 2s infinite;
-      }
-      
-      .float {
-        animation: float 3s ease-in-out infinite;
-      }
-      
-      .scanlines {
-        position: relative;
-      }
-      
       .scanlines::before {
         content: "";
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          to bottom,
-          transparent 50%,
-          rgba(0, 255, 170, 0.1) 51%
-        );
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(to bottom, transparent 50%, rgba(0,255,170,0.1) 51%);
         background-size: 100% 8px;
         pointer-events: none;
         animation: scanline 4s linear infinite;
         z-index: 100;
       }
-      
-      .content-wrapper {
-        position: relative;
-        z-index: 10;
+      @keyframes scanline {
+        0% { background-position: 0 -100vh; }
+        100% { background-position: 0 100vh; }
       }
     </style>
   </head>
-  <body class="m-0 p-0 bg-cover bg-center bg-fixed" style="background-image: url('https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg'); font-family: 'Kelly Slab', sans-serif; color: #ffffff;">
-    <!-- Scanlines overlay (fixed position) -->
+  <body class="font-slab bg-cover bg-fixed bg-center text-black transition-all duration-300 dark:bg-black dark:text-white" style="background-image: url('https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg');">
     <div class="scanlines"></div>
-    
-    <!-- Scrollable content -->
-    <div class="content-wrapper flex flex-col items-center text-center min-h-screen">
-      <!-- Animated Palestine Flag -->
-      <div class="float my-10">
-        <img class="max-w-xs h-auto" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsIcikbv4F5vgboAsCVhDUWwrT_QZrva810fxp7uviQleIyxhNNP2KKgM0kL4DzMPhhIPE4deDi3WUocGeTq-GzvqCHqcB8CXfs1blzVMXqp2Qvx8wXf3HyvbP0R5_8J_w9Tss8N9cWJLYfXpGFjQzh7WBRwQhuS0m5rFQJaj_44Nv21GSa-aRWjtuaKs/s600/Palestine_flag_with_coat_of_arms.gif" alt="Palestine Flag" />
+
+    <div class="flex min-h-screen flex-col items-center justify-start p-4 text-center">
+      <!-- Top Bar -->
+      <div class="mb-4 flex w-full max-w-4xl items-center justify-between">
+        <!-- Language Toggle -->
+        <button id="langToggle" class="rounded-md bg-gray-700 px-4 py-2 text-white transition hover:opacity-80 dark:bg-white dark:text-black">বাংলা</button>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="rounded-md bg-yellow-400 px-4 py-2 text-black transition hover:bg-yellow-300">Toggle Theme</button>
       </div>
 
-      <!-- Main Content Box -->
-      <div class="max-w-2xl p-5 bg-black bg-opacity-80 rounded-lg mb-10 border-2 border-red-600 relative overflow-hidden">
-        <!-- Matrix Rain Effect Container -->
-        <div class="matrix-rain absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"></div>
-        
-        <!-- Animated Header -->
-        <h1 class="text-4xl font-bold mb-4 neon-text">HACKED BY <span class="text-red-500">IllegalBAT</span></h1>
-        
-        <!-- Static But Highlighted Subheader -->
-        <p class="text-red-500 font-bold text-xl mb-4 bg-black bg-opacity-50 px-3 py-1 rounded">Webserver seized by IllegalBAT</p>
-        
-        <!-- Tagline with subtle glow -->
-        <p class="text-yellow-300 mb-6 text-shadow shadow-yellow-500/50">We Are Humans (unlike you).</p>
-        
-        <!-- Main Content (static but centered) -->
-        <div class="text-center space-y-4 mx-auto max-w-lg">
+      <!-- Flag -->
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsIcikbv4F5vgboAsCVhDUWwrT_QZrva810fxp7uviQleIyxhNNP2KKgM0kL4DzMPhhIPE4deDi3WUocGeTq-GzvqCHqcB8CXfs1blzVMXqp2Qvx8wXf3HyvbP0R5_8J_w9Tss8N9cWJLYfXpGFjQzh7WBRwQhuS0m5rFQJaj_44Nv21GSa-aRWjtuaKs/s600/Palestine_flag_with_coat_of_arms.gif" class="my-6 w-40" alt="Flag" />
+
+      <!-- Main Content -->
+      <div class="bg-opacity-70 dark:bg-opacity-80 w-full max-w-5xl space-y-4 rounded-xl border-2 border-red-600 bg-black p-6 text-center">
+        <h1 class="flicker text-4xl font-bold sm:text-5xl">HACKED BY <span class="text-red-500">IllegalBAT</span></h1>
+        <p class="text-xl font-semibold text-red-400">Webserver seized by IllegalBAT</p>
+        <p class="text-yellow-300">We Are Humans (unlike you).</p>
+
+        <!-- English Content -->
+        <div id="content-en" class="space-y-2 text-base sm:text-lg">
           <p>Shame on this generation for watching genocide in 4K and scrolling past.</p>
           <p>You hire a freelancer on Fiverr, you kill a child in Gaza.</p>
           <p>You sip your Coca-Cola, and a mother in Rafah screams into the rubble.</p>
@@ -125,77 +95,57 @@
           <p>But a child being crushed under rubble has no time for your comfort.</p>
           <p>You are either with humanity — or you are with genocide.</p>
         </div>
-        
-        <!-- Closing Statements -->
-        <div class="mt-6 space-y-4">
-          <p>You may not be in Gaza, but Gaza is in your heart — if you have one.</p>
-          <p class="font-bold">Don't scroll past this.</p>
+
+        <!-- Bangla Content -->
+        <div id="content-bn" class="font-bangla hidden space-y-2 text-base leading-relaxed sm:text-lg">
+          <p>এই প্রজন্ম 4K-তে গণহত্যা দেখে স্ক্রল করে চলে যায় — লজ্জা।</p>
+          <p>আপনি Fiverr-এ একজন ফ্রিল্যান্সার ভাড়া করেন, গাজায় একটি শিশু মারা যায়।</p>
+          <p>আপনি কোক পান করেন, রাফাহর একজন মা ধ্বংসস্তূপে চিৎকার করেন।</p>
+          <p>আপনি ম্যাকডোনাল্ডস থেকে অর্ডার করেন, একটি বাড়ি ধূলিকণায় উড়ে যায়।</p>
+          <p>আপনি Amazon-এ কেনাকাটা করেন, একটি ড্রোন তার লক্ষ্য ঠিক করে।</p>
+          <p>আপনি ভিসা কার্ড সোয়াইপ করেন, একটি হাসপাতাল অপারেশনের সময় বিদ্যুৎ হারায়।</p>
+          <p>আপনি আরেকটি বোমাবর্ষণ পাশ কাটান, একটি ছোট মেয়ে তার মৃত ভাইকে জড়িয়ে ধরে।</p>
+          <p>আপনি স্টারবাকসে যান, আর একটি শিশু মারা যায় কারণ ইনকিউবেটরে বিদ্যুৎ ছিল না।</p>
+          <p>আপনি বলেন "এটা জটিল", কিন্তু গণহত্যা কখনোই জটিল নয়।</p>
+          <p>আপনার প্রতিটি নীরবতা, প্রতিটি ডলার, প্রতিটি ব্র্যান্ড — গাজায় তার প্রতিধ্বনি শোনা যায়।</p>
+          <p>এটা শুধু যুদ্ধ নয়, এটা হত্যার স্বাভাবিকীকরণ।</p>
+          <p>এটা ব্র্যান্ড দ্বারা অর্থায়নকৃত, সরকার দ্বারা মাফকৃত, আর মানুষ দ্বারা সক্ষম যারা শুধু অস্বস্তি পছন্দ করে না।</p>
+          <p>কিন্তু ধ্বংসস্তূপে চাপা পড়ে থাকা একটি শিশুর সময় নেই আপনার আরাম নেওয়ার।</p>
+          <p>আপনি হয় মানবতার পক্ষে — নয় গণহত্যার পাশে।</p>
         </div>
-        
-        <!-- Signature with animated border -->
-        <div class="mt-6 border-t-2 border-red-500 pt-4 relative">
-          <div class="absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
-          <p class="underline text-yellow-300">Shame on those who turn a blind eye to the suffering,</p>
-          <p class="font-bold text-red-500 mt-2">| Shame on those who stay silent. |</p>
+
+        <p class="mt-6">You may not be in Gaza, but Gaza is in your heart — if you have one.</p>
+        <p class="font-bold">Don't scroll past this.</p>
+
+        <div class="mt-6 border-t border-red-500 pt-4">
+          <p class="text-yellow-300 underline">Shame on those who turn a blind eye to the suffering,</p>
+          <p class="mt-2 font-bold text-red-500">| Shame on those who stay silent. |</p>
         </div>
       </div>
 
-      <!-- Animated Button -->
-      <button class="bg-gradient-to-r from-green-400 to-blue-500 text-black px-8 py-4 font-bold rounded-md cursor-pointer mb-10 hover:from-green-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/50 pulse" onclick="window.open('https://www.aljazeera.com/where/palestine/', '_blank')">
-        Check how many lives you killed with your silence.
-      </button>
+      <!-- Link Button -->
+      <a href="https://www.aljazeera.com/where/palestine/" target="_blank" class="mt-8 block w-fit transform rounded-lg bg-gradient-to-r from-green-400 to-blue-500 px-8 py-3 text-center font-bold text-black transition hover:scale-105 hover:from-green-500 hover:to-blue-600"> Check how many lives you killed with your silence. </a>
 
-      <!-- Footer with animated background -->
-      <div class="w-full bg-black bg-opacity-70 py-2 border-t-2 border-red-500 mt-auto">
-        <p class="text-sm tracking-wider">#FreePalestine | #StopGenocide | #BoycottIsrael</p>
-      </div>
+      <!-- Footer -->
+      <footer class="bg-opacity-50 mt-10 w-full border-t border-red-500 bg-white py-3 text-center text-sm dark:bg-black">#FreePalestine | #StopGenocide | #BoycottIsrael</footer>
     </div>
 
-    <!-- Matrix Rain Effect Script -->
+    <!-- Scripts -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const container = document.querySelector('.matrix-rain');
-        const characters = "01";
-        const fontSize = 14;
-        const columns = Math.floor(window.innerWidth / fontSize);
-        
-        for (let i = 0; i < columns; i++) {
-          const column = document.createElement('div');
-          column.className = 'matrix-column absolute top-0 text-green-400';
-          column.style.left = `${i * fontSize}px`;
-          column.style.fontSize = `${fontSize}px`;
-          column.style.writingMode = 'vertical-rl';
-          column.style.textOrientation = 'upright';
-          container.appendChild(column);
-          
-          // Start animation
-          animateColumn(column);
-        }
-        
-        function animateColumn(column) {
-          let length = Math.floor(Math.random() * 10) + 5;
-          let chars = '';
-          
-          for (let i = 0; i < length; i++) {
-            chars += characters.charAt(Math.floor(Math.random() * characters.length));
-          }
-          
-          column.textContent = chars;
-          column.style.top = `-${length * fontSize}px`;
-          
-          let duration = Math.random() * 3000 + 2000;
-          let delay = Math.random() * 5000;
-          
-          setTimeout(() => {
-            column.style.transition = `top ${duration}ms linear`;
-            column.style.top = `${window.innerHeight}px`;
-            
-            setTimeout(() => {
-              column.style.transition = 'none';
-              animateColumn(column);
-            }, duration);
-          }, delay);
-        }
+      const langBtn = document.getElementById('langToggle');
+      const enText = document.getElementById('content-en');
+      const bnText = document.getElementById('content-bn');
+
+      langBtn.addEventListener('click', () => {
+        const inEnglish = !enText.classList.contains('hidden');
+        enText.classList.toggle('hidden');
+        bnText.classList.toggle('hidden');
+        langBtn.textContent = inEnglish ? "English" : "বাংলা";
+      });
+
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
       });
     </script>
   </body>
