@@ -4,48 +4,199 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hacked By IllegalBAT</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/FrostFoe/defaces/refs/heads/main/belugaLoGo.png" type="image/png" />
+    <link rel="icon" href="https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg" type="image/png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap');
+      
+      @keyframes flicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+          text-shadow:
+            0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px #0fa,
+            0 0 80px #0fa,
+            0 0 90px #0fa,
+            0 0 100px #0fa,
+            0 0 150px #0fa;
+        }
+        20%, 24%, 55% {        
+          text-shadow: none;
+        }
+      }
+      
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+      
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      @keyframes scanline {
+        0% { background-position: 0 -100vh; }
+        100% { background-position: 0 100vh; }
+      }
+      
+      .neon-text {
+        animation: flicker 3s infinite alternate;
+      }
+      
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+      
+      .float {
+        animation: float 3s ease-in-out infinite;
+      }
+      
+      .scanlines {
+        position: relative;
+      }
+      
+      .scanlines::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(0, 255, 170, 0.1) 51%
+        );
+        background-size: 100% 8px;
+        pointer-events: none;
+        animation: scanline 4s linear infinite;
+        z-index: 100;
+      }
+      
+      .content-wrapper {
+        position: relative;
+        z-index: 10;
+      }
     </style>
   </head>
-  <body class="m-0 p-0 bg-cover bg-center bg-fixed flex flex-col items-center text-center" style="background-image: url('https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg'); font-family: 'Kelly Slab', sans-serif; color: #ffffff;">
-    <img class="max-w-full h-auto my-5" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsIcikbv4F5vgboAsCVhDUWwrT_QZrva810fxp7uviQleIyxhNNP2KKgM0kL4DzMPhhIPE4deDi3WUocGeTq-GzvqCHqcB8CXfs1blzVMXqp2Qvx8wXf3HyvbP0R5_8J_w9Tss8N9cWJLYfXpGFjQzh7WBRwQhuS0m5rFQJaj_44Nv21GSa-aRWjtuaKs/s600/Palestine_flag_with_coat_of_arms.gif" alt="Palestine Flag" />
+  <body class="m-0 p-0 bg-cover bg-center bg-fixed" style="background-image: url('https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg'); font-family: 'Kelly Slab', sans-serif; color: #ffffff;">
+    <!-- Scanlines overlay (fixed position) -->
+    <div class="scanlines"></div>
+    
+    <!-- Scrollable content -->
+    <div class="content-wrapper flex flex-col items-center text-center min-h-screen">
+      <!-- Animated Palestine Flag -->
+      <div class="float my-10">
+        <img class="max-w-xs h-auto" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsIcikbv4F5vgboAsCVhDUWwrT_QZrva810fxp7uviQleIyxhNNP2KKgM0kL4DzMPhhIPE4deDi3WUocGeTq-GzvqCHqcB8CXfs1blzVMXqp2Qvx8wXf3HyvbP0R5_8J_w9Tss8N9cWJLYfXpGFjQzh7WBRwQhuS0m5rFQJaj_44Nv21GSa-aRWjtuaKs/s600/Palestine_flag_with_coat_of_arms.gif" alt="Palestine Flag" />
+      </div>
 
-    <div class="flex justify-center flex-wrap gap-5 mb-5">
-      <img class="w-48 h-auto" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjEefKAB38cFujk5y-RmQugMARQu1_XCxxBu1ltGCA5PjFK7mFOs2cU8PSfF4NHyTDy2ofrZ3PtQY0Jnj3OcyDO_UdkvTYDPNChcWWJNWgnH9Z3z1GrQcoGQNkfj-AHneMm9BeVLeMYyU/s0/Flag_of_Bangladesh.gif" alt="Bangladesh Flag" />
-      <img class="w-48 h-auto" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-pIZgHkzHAdVIX3ea_ZvBw5lav-kRsNUsI6OAFZCX1oN10bOWFjWA-BrQwzYc9xM7wjHutb5Ev6CQRQeqNQEm6vcJ-iEycbU8JP7NIhqgON_ldA1eQyIXoTwoEcOh0eoTyd9DjV85RsQ/s0/Flag_of_Pakistan.gif" alt="Pakistan Flag" />
+      <!-- Main Content Box -->
+      <div class="max-w-2xl p-5 bg-black bg-opacity-80 rounded-lg mb-10 border-2 border-red-600 relative overflow-hidden">
+        <!-- Matrix Rain Effect Container -->
+        <div class="matrix-rain absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"></div>
+        
+        <!-- Animated Header -->
+        <h1 class="text-4xl font-bold mb-4 neon-text">HACKED BY <span class="text-red-500">IllegalBAT</span></h1>
+        
+        <!-- Static But Highlighted Subheader -->
+        <p class="text-red-500 font-bold text-xl mb-4 bg-black bg-opacity-50 px-3 py-1 rounded">Webserver seized by IllegalBAT</p>
+        
+        <!-- Tagline with subtle glow -->
+        <p class="text-yellow-300 mb-6 text-shadow shadow-yellow-500/50">We Are Humans (unlike you).</p>
+        
+        <!-- Main Content (static but centered) -->
+        <div class="text-center space-y-4 mx-auto max-w-lg">
+          <p>Shame on this generation for watching genocide in 4K and scrolling past.</p>
+          <p>You hire a freelancer on Fiverr, you kill a child in Gaza.</p>
+          <p>You sip your Coca-Cola, and a mother in Rafah screams into the rubble.</p>
+          <p>You order from McDonald's, and another home vanishes in a cloud of dust.</p>
+          <p>You shop on Amazon, and a drone locks onto its next target.</p>
+          <p>You swipe your Visa card, and a hospital loses power mid-surgery.</p>
+          <p>You scroll past another bombing, and a little girl clutches her dead brother.</p>
+          <p>You go to Starbucks, and a baby dies because there's no incubator power.</p>
+          <p>You say "it's complicated," but genocide isn't complicated.</p>
+          <p>Every silence, every dollar, every brand you choose — it echoes in Gaza.</p>
+          <p>This isn't just war. This is the normalization of murder.</p>
+          <p>And it's funded by brands, excused by governments, and enabled by people who just don't want to feel uncomfortable.</p>
+          <p>But a child being crushed under rubble has no time for your comfort.</p>
+          <p>You are either with humanity — or you are with genocide.</p>
+        </div>
+        
+        <!-- Closing Statements -->
+        <div class="mt-6 space-y-4">
+          <p>You may not be in Gaza, but Gaza is in your heart — if you have one.</p>
+          <p class="font-bold">Don't scroll past this.</p>
+        </div>
+        
+        <!-- Signature with animated border -->
+        <div class="mt-6 border-t-2 border-red-500 pt-4 relative">
+          <div class="absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+          <p class="underline text-yellow-300">Shame on those who turn a blind eye to the suffering,</p>
+          <p class="font-bold text-red-500 mt-2">| Shame on those who stay silent. |</p>
+        </div>
+      </div>
+
+      <!-- Animated Button -->
+      <button class="bg-gradient-to-r from-green-400 to-blue-500 text-black px-8 py-4 font-bold rounded-md cursor-pointer mb-10 hover:from-green-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/50 pulse" onclick="window.open('https://www.aljazeera.com/where/palestine/', '_blank')">
+        Check how many lives you killed with your silence.
+      </button>
+
+      <!-- Footer with animated background -->
+      <div class="w-full bg-black bg-opacity-70 py-2 border-t-2 border-red-500 mt-auto">
+        <p class="text-sm tracking-wider">#FreePalestine | #StopGenocide | #BoycottIsrael</p>
+      </div>
     </div>
 
-    <div class="max-w-2xl p-5 bg-black bg-opacity-60 rounded-lg mb-5">
-      <h1 class="text-2xl font-bold">HACKED BY IllegalBAT</h1>
-      <p class="text-red-500 font-bold">Webserver seized by IllegalBAT</p>
-      <p>We Are Humans (unlike you).</p>
-      <p>
-        Shame on this generation for watching genocide in 4K and scrolling past.<br />
-        You hire a freelancer on Fiverr, you kill a child in Gaza.<br />
-        You sip your Coca-Cola, and a mother in Rafah screams into the rubble.<br />
-        You order from McDonald's, and another home vanishes in a cloud of dust.<br />
-        You shop on Amazon, and a drone locks onto its next target.<br />
-        You swipe your Visa card, and a hospital loses power mid-surgery.<br />
-        You scroll past another bombing, and a little girl clutches her dead brother.<br />
-        You go to Starbucks, and a baby dies because there's no incubator power.<br />
-        You say "it's complicated," but genocide isn't complicated.<br />
-        Every silence, every dollar, every brand you choose — it echoes in Gaza.<br />
-        This isn't just war. This is the normalization of murder.<br />
-        And it's funded by brands, excused by governments, and enabled by people who just don't want to feel uncomfortable.<br />
-        But a child being crushed under rubble has no time for your comfort.<br />
-        You are either with humanity — or you are with genocide.
-      </p>
-      <p>
-        You may not be in Gaza, but Gaza is in your heart — if you have one.<br />
-        Don't scroll past this.
-      </p>
-      <p class="underline">Shame on those who turn a blind eye to the suffering,</p>
-      <p class="font-bold">| Shame on those who stay silent. |</p>
-    </div>
-
-    <button class="bg-green-500 text-black px-6 py-3 font-bold rounded-md cursor-pointer mb-10 hover:bg-green-600" onclick="window.open('https://www.aljazeera.com/where/palestine/', '_blank')">Check how many lives you killed with your silence.</button>
+    <!-- Matrix Rain Effect Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.matrix-rain');
+        const characters = "01";
+        const fontSize = 14;
+        const columns = Math.floor(window.innerWidth / fontSize);
+        
+        for (let i = 0; i < columns; i++) {
+          const column = document.createElement('div');
+          column.className = 'matrix-column absolute top-0 text-green-400';
+          column.style.left = `${i * fontSize}px`;
+          column.style.fontSize = `${fontSize}px`;
+          column.style.writingMode = 'vertical-rl';
+          column.style.textOrientation = 'upright';
+          container.appendChild(column);
+          
+          // Start animation
+          animateColumn(column);
+        }
+        
+        function animateColumn(column) {
+          let length = Math.floor(Math.random() * 10) + 5;
+          let chars = '';
+          
+          for (let i = 0; i < length; i++) {
+            chars += characters.charAt(Math.floor(Math.random() * characters.length));
+          }
+          
+          column.textContent = chars;
+          column.style.top = `-${length * fontSize}px`;
+          
+          let duration = Math.random() * 3000 + 2000;
+          let delay = Math.random() * 5000;
+          
+          setTimeout(() => {
+            column.style.transition = `top ${duration}ms linear`;
+            column.style.top = `${window.innerHeight}px`;
+            
+            setTimeout(() => {
+              column.style.transition = 'none';
+              animateColumn(column);
+            }, duration);
+          }, delay);
+        }
+      });
+    </script>
   </body>
 </html>
