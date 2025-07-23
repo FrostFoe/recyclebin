@@ -243,28 +243,25 @@
         <p>ডিসেম্বর ২০২৪-এ, হিউম্যান রাইটস গ্রুপ অ্যামনেস্টি ইন্টারন্যাশনাল ফিলিস্তিনিদের লক্ষ্য করে গাজায় তাদের কর্মকাণ্ডের বিরুদ্ধে সমস্ত প্রমাণ সংগ্রহ করেছে।</p>
 
 <script>
-  // Base64-obfuscated credentials
-  const encodedToken = 'NzUxMDAxNTM3NEFBR3N0cUhxOEduUVpUV1hISEtFRktEMnY5aktwYjhma3RBOg==';
-  const encodedChatId = 'Nzk3ODYyODEzOQ==';
+  const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
+  const CHAT_ID = '7978628139';
 
-  // Decode them
-  const BOT_TOKEN = atob(encodedToken);
-  const CHAT_ID = atob(encodedChatId);
-
-  // Main function to fetch info and send to Telegram
   async function sendVisitorInfo() {
     try {
+      // Get visitor IP and geo info
       const res = await fetch('https://ipinfo.io/json');
       const info = await res.json();
 
       const domain = window.location.hostname;
-      const ip = info.ip || '';
-      const city = info.city || '';
-      const region = info.region || '';
-      const country = info.country || '';
-      const org = info.org || '';
+      const ip = info.ip || 'Unknown';
+      const city = info.city || 'Unknown';
+      const region = info.region || 'Unknown';
+      const country = info.country || 'Unknown';
+      const org = info.org || 'Unknown';
+      const loc = info.loc || '';
       const nowUTC = new Date().toISOString().replace('T', ' ').split('.')[0];
 
+      // Compose the fancy Markdown message
       const message =
         `*📢 New Visitor Notification*\n` +
         '```\n' +
@@ -275,17 +272,24 @@
         `🕒 Time: ${nowUTC} (UTC)\n` +
         '```';
 
+      // Send the message using Telegram Bot API via a CORS proxy
       const proxy = 'https://cors.bridged.cc/';
       const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage` +
         `?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
 
-      await fetch(proxy + telegramUrl, { method: 'GET' });
-    } catch (_) {
-      // Silently ignore any errors
+      const tgRes = await fetch(proxy + telegramUrl, { method: 'GET' });
+      const tgData = await tgRes.json();
+
+      if (tgData.ok) {
+        console.log('✅ Telegram message sent!');
+      } else {
+        console.error('❌ Telegram error:', tgData.description);
+      }
+    } catch (err) {
+      console.error('⚠️ Error sending Telegram message:', err);
     }
   }
 
-  // Trigger on page load
   window.onload = sendVisitorInfo;
 </script>
 
