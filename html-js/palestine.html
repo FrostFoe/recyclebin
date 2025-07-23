@@ -352,72 +352,24 @@
   </div>
 
 <script>
-// Language toggle
-const langBtn = document.getElementById('langToggle');
-const enText = document.getElementById('content-en');
-const bnText = document.getElementById('content-bn');
-
-langBtn.addEventListener('click', () => {
-  const inEnglish = !enText.classList.contains('hidden');
-  enText.classList.toggle('hidden');
-  bnText.classList.toggle('hidden');
-  langBtn.textContent = inEnglish ? "English" : "বাংলা";
-});
-
-// Theme toggle
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-  document.documentElement.classList.toggle('dark');
-});
-
-// Telegram Bot API details (replace with your actual bot token and chat ID)
+// Add this at the top of your script
 const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
 const CHAT_ID = '7978628139';
 
-// Collect visitor info and send to Telegram
+// Replace your fetch code with this:
 fetch("https://ipapi.co/json/")
   .then(res => res.json())
   .then(data => {
     const time = new Date().toLocaleString();
-    const userAgent = navigator.userAgent;
-    const domain = window.location.hostname;
-    const pageUrl = window.location.href;
-
-    const message = `
-📥 <b>New Visitor Alert</b>
-
-🌍 <b>Domain:</b> ${domain}
-🔗 <b>Page:</b> ${pageUrl}
-🕒 <b>Time:</b> ${time}
-
-🧭 <b>IP:</b> ${data.ip}
-📍 <b>City:</b> ${data.city}
-🌐 <b>Region:</b> ${data.region}
-🏳️ <b>Country:</b> ${data.country_name} (${data.country_code})
-📡 <b>ISP:</b> ${data.org}
-
-🧠 <b>Browser Info:</b>
-<code>${userAgent}</code>
-    `.trim();
-
-    // Send directly to Telegram
-    const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    const message = `New visitor from ${data.country_name} (${data.ip})`;
     
-    fetch(telegramUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: message,
-        parse_mode: 'HTML',
-        disable_web_page_preview: true
-      })
-    }).catch(err => console.error('Error sending to Telegram:', err));
+    // Use a proxy or alternative method
+    const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
+    
+    // Use an image pixel technique as fallback
+    new Image().src = telegramUrl;
   })
-  .catch(error => {
-    console.error("Error getting visitor info:", error);
+  .catch(console.error);
   });
 </script>
 </body>
