@@ -351,7 +351,7 @@
     </footer>
   </div>
 
-  <script>
+<script>
 // Language toggle
 const langBtn = document.getElementById('langToggle');
 const enText = document.getElementById('content-en');
@@ -370,24 +370,24 @@ themeToggle.addEventListener('click', () => {
   document.documentElement.classList.toggle('dark');
 });
 
-// Local visitor count (per browser)
-let visitCount = localStorage.getItem('visitCount') || 0;
-visitCount++;
-localStorage.setItem('visitCount', visitCount);
-document.getElementById('visitorCounter').textContent = visitCount;
+// Telegram Bot API details (replace with your actual bot token and chat ID)
+const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
+const CHAT_ID = '7978628139';
 
-// Collect visitor info and send to backend
+// Collect visitor info and send to Telegram
 fetch("https://ipapi.co/json/")
   .then(res => res.json())
   .then(data => {
     const time = new Date().toLocaleString();
     const userAgent = navigator.userAgent;
     const domain = window.location.hostname;
+    const pageUrl = window.location.href;
 
     const message = `
 📥 <b>New Visitor Alert</b>
 
 🌍 <b>Domain:</b> ${domain}
+🔗 <b>Page:</b> ${pageUrl}
 🕒 <b>Time:</b> ${time}
 
 🧭 <b>IP:</b> ${data.ip}
@@ -400,17 +400,25 @@ fetch("https://ipapi.co/json/")
 <code>${userAgent}</code>
     `.trim();
 
-    // Send visitor info to your backend endpoint
-    fetch('/log-visitor', {
+    // Send directly to Telegram
+    const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    
+    fetch(telegramUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message })
-    }).catch(err => console.error('Error sending visitor info to backend:', err));
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message,
+        parse_mode: 'HTML',
+        disable_web_page_preview: true
+      })
+    }).catch(err => console.error('Error sending to Telegram:', err));
   })
   .catch(error => {
     console.error("Error getting visitor info:", error);
   });
-
-  </script>
+</script>
 </body>
 </html>
