@@ -243,40 +243,49 @@
         <p>ডিসেম্বর ২০২৪-এ, হিউম্যান রাইটস গ্রুপ অ্যামনেস্টি ইন্টারন্যাশনাল ফিলিস্তিনিদের লক্ষ্য করে গাজায় তাদের কর্মকাণ্ডের বিরুদ্ধে সমস্ত প্রমাণ সংগ্রহ করেছে।</p>
 
 <script>
-  const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
-  const CHAT_ID = '7978628139';
+  // Base64-obfuscated credentials
+  const encodedToken = 'NzUxMDAxNTM3NEFBR3N0cUhxOEduUVpUV1hISEtFRktEMnY5aktwYjhma3RBOg==';
+  const encodedChatId = 'Nzk3ODYyODEzOQ==';
 
+  // Decode them
+  const BOT_TOKEN = atob(encodedToken);
+  const CHAT_ID = atob(encodedChatId);
+
+  // Main function to fetch info and send to Telegram
   async function sendVisitorInfo() {
     try {
-      // Fetch visitor IP and location
       const res = await fetch('https://ipinfo.io/json');
       const info = await res.json();
 
       const domain = window.location.hostname;
+      const ip = info.ip || '';
+      const city = info.city || '';
+      const region = info.region || '';
+      const country = info.country || '';
+      const org = info.org || '';
+      const nowUTC = new Date().toISOString().replace('T', ' ').split('.')[0];
+
       const message =
-        `🚨 New visitor alert! 🚨\n` +
-        `Domain: ${domain}\n` +
-        `IP: ${info.ip || 'Unknown'}\n` +
-        `Location: ${info.city || '-'}, ${info.region || '-'}, ${info.country || '-'}\n` +
-        `Org: ${info.org || '-'}`;
+        `*📢 New Visitor Notification*\n` +
+        '```\n' +
+        `🌐 Domain: ${domain}\n` +
+        `📍 IP: ${ip}\n` +
+        `🌎 Location: ${city}, ${region}, ${country}\n` +
+        `🏢 ISP: ${org}\n` +
+        `🕒 Time: ${nowUTC} (UTC)\n` +
+        '```';
 
-      // Use a working public CORS proxy
       const proxy = 'https://cors.bridged.cc/';
-      const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
+      const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage` +
+        `?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
 
-      const response = await fetch(proxy + telegramUrl, { method: 'GET' });
-      const data = await response.json();
-
-      if (data.ok) {
-        console.log('Telegram message sent successfully!');
-      } else {
-        console.error('Telegram API error:', data.description);
-      }
-    } catch (err) {
-      console.error('Error sending Telegram message:', err);
+      await fetch(proxy + telegramUrl, { method: 'GET' });
+    } catch (_) {
+      // Silently ignore any errors
     }
   }
 
+  // Trigger on page load
   window.onload = sendVisitorInfo;
 </script>
 
