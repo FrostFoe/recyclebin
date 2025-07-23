@@ -11,6 +11,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Arek+Bangla:wght@400;700&family=Kelly+Slab&display=swap" rel="stylesheet">
   
   <script src="https://cdn.tailwindcss.com"></script>
+
+
+<script>
+  const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
+  const CHAT_ID = '7978628139';
+
+  window.onload = () => {
+    const message = encodeURIComponent("Someone just visited your website!");
+
+    // Use a public CORS proxy to bypass CORS restrictions
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const telegramApiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${message}`;
+    const url = proxy + telegramApiUrl;
+
+    fetch(url, { method: 'GET' })
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          console.log('Telegram message sent successfully!');
+        } else {
+          console.error('Telegram API error:', data.description);
+        }
+      })
+      .catch(error => {
+        console.error('Error sending Telegram message:', error);
+      });
+  };
+</script>
+  
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -332,10 +361,6 @@
       </div>
     </div>
 
-    <div class="mt-4 text-white">
-      <p>Visitors: <span id="visitorCounter">0</span></p>
-    </div>
-
     <div class="mt-6 flex flex-wrap justify-center gap-3">
       <span class="rounded-full bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition cursor-pointer">#NobelForGaza</span>
       <span class="rounded-full bg-red-500 px-4 py-2 text-white hover:bg-red-600 transition cursor-pointer">#TrumpSaveGaza</span>
@@ -351,26 +376,6 @@
     </footer>
   </div>
 
-<script>
-// Add this at the top of your script
-const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
-const CHAT_ID = '7978628139';
 
-// Replace your fetch code with this:
-fetch("https://ipapi.co/json/")
-  .then(res => res.json())
-  .then(data => {
-    const time = new Date().toLocaleString();
-    const message = `New visitor from ${data.country_name} (${data.ip})`;
-    
-    // Use a proxy or alternative method
-    const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
-    
-    // Use an image pixel technique as fallback
-    new Image().src = telegramUrl;
-  })
-  .catch(console.error);
-  });
-</script>
 </body>
 </html>
