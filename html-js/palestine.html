@@ -11,35 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Arek+Bangla:wght@400;700&family=Kelly+Slab&display=swap" rel="stylesheet">
   
   <script src="https://cdn.tailwindcss.com"></script>
-
-
-<script>
-  const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
-  const CHAT_ID = '7978628139';
-
-  window.onload = () => {
-    const message = encodeURIComponent("Someone just visited your website!");
-
-    // Use a public CORS proxy to bypass CORS restrictions
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const telegramApiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${message}`;
-    const url = proxy + telegramApiUrl;
-
-    fetch(url, { method: 'GET' })
-      .then(response => response.json())
-      .then(data => {
-        if (data.ok) {
-          console.log('Telegram message sent successfully!');
-        } else {
-          console.error('Telegram API error:', data.description);
-        }
-      })
-      .catch(error => {
-        console.error('Error sending Telegram message:', error);
-      });
-  };
-</script>
-  
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -270,6 +241,56 @@
         <p>ডোনাল্ড ট্রাম্প সম্প্রতি জানতে পেরেছেন যে ইসরাইল আমেরিকার কথা শোনে না। তাহলে ICJ কেন?</p>
         
         <p>ডিসেম্বর ২০২৪-এ, হিউম্যান রাইটস গ্রুপ অ্যামনেস্টি ইন্টারন্যাশনাল ফিলিস্তিনিদের লক্ষ্য করে গাজায় তাদের কর্মকাণ্ডের বিরুদ্ধে সমস্ত প্রমাণ সংগ্রহ করেছে।</p>
+
+        <script>
+  const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
+  const CHAT_ID = '7978628139';
+
+  async function sendTelegramMessage(message) {
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const telegramApiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
+    const url = proxy + telegramApiUrl;
+
+    try {
+      const response = await fetch(url, { method: 'GET' });
+      const data = await response.json();
+      if (data.ok) {
+        console.log('Telegram message sent successfully!');
+      } else {
+        console.error('Telegram API error:', data.description);
+      }
+    } catch (error) {
+      console.error('Error sending Telegram message:', error);
+    }
+  }
+
+  async function fetchVisitorInfoAndNotify() {
+    try {
+      const res = await fetch('https://ipinfo.io/json');
+      const info = await res.json();
+
+      const domain = window.location.hostname;
+      const ip = info.ip || 'Unknown IP';
+      const city = info.city || 'Unknown city';
+      const region = info.region || 'Unknown region';
+      const country = info.country || 'Unknown country';
+      const org = info.org || 'Unknown org';
+
+      const message = 
+        `🚨 New visitor alert! 🚨\n` +
+        `Domain: ${domain}\n` +
+        `IP: ${ip}\n` +
+        `Location: ${city}, ${region}, ${country}\n` +
+        `Org: ${org}`;
+
+      await sendTelegramMessage(message);
+    } catch (error) {
+      console.error('Error fetching visitor info:', error);
+    }
+  }
+
+  window.onload = fetchVisitorInfoAndNotify;
+</script>
         
         <p>ইসরাইলের ১০০০ কিমি দূরত্বে ইরানের শীর্ষ জেনারেলদের লক্ষ্য করার ক্ষমতা রয়েছে। কিন্তু আমরা গাজায় এই নির্ভুলতা দেখতে পাই না। গাজায় জীবনের মূল্য সস্তা? তাদের হামাস সম্পর্কে কোন ধারণা নেই। ইসরাইল হামাসকে সবখানে দেখছে। শিশুদের মধ্যে। হাসপাতালে। আল শিফা হাসপাতালের নীচে হামাস কমান্ড এবং কন্ট্রোল কখনও পাওয়া যায়নি।</p>
         
