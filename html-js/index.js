@@ -7,8 +7,8 @@
    * @param {string} href - The URL of the CSS file to load.
    */
   function loadCSS(href) {
-    const link = document.createElement('link'); // Create a new <link> element.
-    link.rel = 'stylesheet'; // Set the 'rel' attribute to 'stylesheet' to indicate it's a CSS file.
+    const link = document.createElement("link"); // Create a new <link> element.
+    link.rel = "stylesheet"; // Set the 'rel' attribute to 'stylesheet' to indicate it's a CSS file.
     link.href = href; // Set the 'href' attribute to the URL of the CSS file.
     document.head.appendChild(link); // Append the <link> element to the <head> of the document, triggering the CSS to load.
   }
@@ -19,18 +19,22 @@
    * @param {function} [callback] - An optional function to execute after the script has loaded.
    */
   function loadJS(src, callback) {
-    const script = document.createElement('script'); // Create a new <script> element.
+    const script = document.createElement("script"); // Create a new <script> element.
     script.src = src; // Set the 'src' attribute to the URL of the JavaScript file.
     script.onload = callback; // Set the 'onload' event handler to the provided callback function, which will be executed once the script has finished loading.
     document.head.appendChild(script); // Append the <script> element to the <head> of the document, triggering the JavaScript to load and execute.
   }
 
   // Load required CSS files from CDNs (Content Delivery Networks) for better performance and wider availability.
-  loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'); // Loads Font Awesome icons.
-  loadCSS('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap'); // Loads the Hind Siliguri font from Google Fonts.
+  loadCSS(
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+  ); // Loads Font Awesome icons.
+  loadCSS(
+    "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap",
+  ); // Loads the Hind Siliguri font from Google Fonts.
 
   // Create and append custom inline styles to the document's head.
-  const style = document.createElement('style'); // Create a new <style> element.
+  const style = document.createElement("style"); // Create a new <style> element.
   style.textContent = `
     body {
       font-family: 'Hind Siliguri', sans-serif; /* Sets the default font for the entire body. */
@@ -71,37 +75,37 @@
   `;
 
   // Append the generated HTML structure to the document's body.
-  const div = document.createElement('div'); // Create a new <div> element.
+  const div = document.createElement("div"); // Create a new <div> element.
   div.innerHTML = notificationHTML; // Set the inner HTML of the <div> to the notification HTML.
   document.body.appendChild(div); // Append the <div> (containing the notification) to the end of the document's body.
 
   // Logic to show and dismiss the notification.
-  window.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener("DOMContentLoaded", () => {
     // This event listener ensures that the code inside it runs only after the entire HTML document has been fully loaded and parsed.
 
-    const overlay = document.getElementById('notification-overlay'); // Get a reference to the notification overlay element by its ID.
-    const dismissBtn = document.getElementById('dismiss-notification'); // Get a reference to the dismiss button element by its ID.
+    const overlay = document.getElementById("notification-overlay"); // Get a reference to the notification overlay element by its ID.
+    const dismissBtn = document.getElementById("dismiss-notification"); // Get a reference to the dismiss button element by its ID.
 
     // Initially show the notification overlay.
     if (overlay) {
-      overlay.style.display = 'flex'; // Set the display style to 'flex' to make the overlay visible and center its content.
+      overlay.style.display = "flex"; // Set the display style to 'flex' to make the overlay visible and center its content.
     }
 
     // Add an event listener to the dismiss button to hide the notification when clicked.
     if (dismissBtn) {
-      dismissBtn.addEventListener('click', () => {
+      dismissBtn.addEventListener("click", () => {
         if (overlay) {
-          overlay.style.display = 'none'; // Set the display style to 'none' to hide the overlay.
+          overlay.style.display = "none"; // Set the display style to 'none' to hide the overlay.
         }
       });
     }
 
     // Add an event listener to the overlay itself to allow closing the notification by clicking outside the main content area.
     if (overlay) {
-      overlay.addEventListener('click', (e) => {
+      overlay.addEventListener("click", (e) => {
         if (e.target === overlay) {
           // If the clicked element is the overlay itself (and not its children), hide the overlay.
-          overlay.style.display = 'none';
+          overlay.style.display = "none";
         }
       });
     }
