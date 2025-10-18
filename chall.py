@@ -1,0 +1,25 @@
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from hashlib import sha256
+from secret import prime_factors, flag, r, e, p, q
+
+facts = prime_factors(r)
+assert len(facts) == 7
+assert r.bit_length() == 40
+
+n = p*q
+c = pow(r,e,n)
+
+key = sha256(str(r).encode()).digest()
+ct = AES.new(key, AES.MODE_ECB).encrypt(pad(flag, 16)).hex()
+
+print('e =',e)
+print('n =',n)
+print('c =',c)
+print('ct =',ct)
+'''
+e = 65537
+n = 11396254869606777204756971087516249818613806916805993683885490975977354034257513164645669156883032133737643402831436566360339338862173294722866244368802037
+c = 10236684628486999592462864230676386278640112447061744221805991233230566540639944273593675368305815620133539326251625333562190411562641631968236443413724859
+ct = f2d8152484b83f95edcf93d261c5f24c92e4c00d071343ed03e7af558654625fe134527635150c7b9df4ba0471737885da4be19b19c4be8d2ad9c36f48a0b4ad
+'''
